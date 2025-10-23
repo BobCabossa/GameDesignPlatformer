@@ -4,7 +4,7 @@
 
 - Title - DONE
 - Btn
-    - "Start"
+    - "Start" - DONE
     - "Exit" - DONE
 
 ## Loading screne - DONE
