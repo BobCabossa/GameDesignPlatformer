@@ -2,23 +2,23 @@
 
 ## Main menu
 
-- Title
+- Title - DONE
 - Btn
     - "Start"
-    - "Exit" / "Leave"
+    - "Exit" - DONE
 
+## Loading screne - DONE
 
-## Loading screen
-
-Make a working loading screen...
+Make a working loading screne...
 
 ## Gameplay
 
-- Simple map
-- Death zone below the map
-- Moving platforms
+- Simple map - DONE
+- Death zone below the map - DONE 
+- Moving platforms - DONE
 
 ### Player
+- Die from death zone
 - 1 hit ko
 - power up?
 - Move with the moving platforms
@@ -44,3 +44,7 @@ Make a working loading screen...
     - "Exit level"
     - "Restart"?
     - "Exit game"
+
+## Main menu
+
+- Make level select
