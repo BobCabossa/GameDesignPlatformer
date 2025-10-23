@@ -1,7 +1,6 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
-using System.Collections;
 
 public class SceneLoader : MonoBehaviour
 {
@@ -16,23 +15,28 @@ public class SceneLoader : MonoBehaviour
 
     public static void LoadScene(string sceneName)
     {
-        if (sceneName == string.Empty)
+        SceneToLoad = sceneName;
+        LoadPreviousScene();
+    }
+
+    public static void LoadPreviousScene()
+    {
+        if (SceneToLoad == string.Empty)
         {
             Debug.LogWarning("A scene tried to be loaded without a scene name.");
             return;
         }
-
-        SceneToLoad = sceneName;
+        
         SceneManager.LoadScene("LoadingScene");
     }
 
     private void Start()
     {
         // Automatically start loading the next scene
-        StartCoroutine(LoadAsyncScene());
+        LoadAsyncScene();
     }
 
-    private IEnumerator LoadAsyncScene()
+    private async void LoadAsyncScene()
     {
         AsyncOperation operation = SceneManager.LoadSceneAsync(SceneToLoad);
         operation.allowSceneActivation = false;
@@ -48,11 +52,16 @@ public class SceneLoader : MonoBehaviour
             if (progressText != null)
                 progressText.text = (progress * 100f).ToString("F0") + "%";
 
-            yield return null;
+            // Update unity / completes the frame
+            await Awaitable.NextFrameAsync();
+
+            // Activate the scene when fully loaded
+            if (operation.progress >= 0.9f)
+                break;
         }
 
         // To allow the loader to show
-        yield return new WaitForSeconds(0.25f);
+        await Awaitable.WaitForSecondsAsync(0.25f);
 
         operation.allowSceneActivation = true;
     }
