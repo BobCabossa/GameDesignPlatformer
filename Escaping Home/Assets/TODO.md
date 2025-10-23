@@ -18,8 +18,8 @@ Make a working loading screne...
 - Moving platforms - DONE
 
 ### Player
-- Die from death zone
-- Move
+- Die from death zone - Half done
+- Move - DONE
 - 1 hit ko
 - power up?
 - Move with the moving platforms
@@ -40,6 +40,10 @@ Follow the player and have a stop point at the end of the map and the start of t
 
 ## Pause menu
 
+### Loader
+- Add progress text
+
+### Menu
 - Puase the game
 - Title
 - Sub title: level (with name level?)
