@@ -19,9 +19,13 @@ Make a working loading screne...
 
 ### Player
 - Die from death zone
+- Move
 - 1 hit ko
 - power up?
 - Move with the moving platforms
+
+### Camera movement
+Follow the player and have a stop point at the end of the map and the start of the map
 
 ### Enemies
 
