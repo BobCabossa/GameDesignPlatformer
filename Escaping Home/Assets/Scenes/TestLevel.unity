@@ -183,7 +183,7 @@ TilemapCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
@@ -23329,7 +23329,7 @@ GameObject:
   - component: {fileID: 929924853}
   - component: {fileID: 929924852}
   - component: {fileID: 929924851}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Ground
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -26933,11 +26933,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1235472645948317851, guid: a480d4b5f689b54458834a4f8e4bd77e, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -6.4
+      value: -5.5
       objectReference: {fileID: 0}
     - target: {fileID: 1235472645948317851, guid: a480d4b5f689b54458834a4f8e4bd77e, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1.75
+      value: -2.15
       objectReference: {fileID: 0}
     - target: {fileID: 1235472645948317851, guid: a480d4b5f689b54458834a4f8e4bd77e, type: 3}
       propertyPath: m_LocalPosition.z
@@ -26974,6 +26974,22 @@ PrefabInstance:
     - target: {fileID: 1270836085626915486, guid: a480d4b5f689b54458834a4f8e4bd77e, type: 3}
       propertyPath: m_Name
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 1297920435088900462, guid: a480d4b5f689b54458834a4f8e4bd77e, type: 3}
+      propertyPath: m_Mass
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2509380520276335421, guid: a480d4b5f689b54458834a4f8e4bd77e, type: 3}
+      propertyPath: JumpForce
+      value: 220
+      objectReference: {fileID: 0}
+    - target: {fileID: 2509380520276335421, guid: a480d4b5f689b54458834a4f8e4bd77e, type: 3}
+      propertyPath: MoveSpeed
+      value: 4.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7731105340297342521, guid: a480d4b5f689b54458834a4f8e4bd77e, type: 3}
+      propertyPath: groundLayers.m_Bits
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

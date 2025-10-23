@@ -3,16 +3,21 @@ using UnityEngine.InputSystem;
 
 public class PlayerMovement : MonoBehaviour
 {
-    public float moveSpeed = 5f;
-    public float jumpForce = 40;
+    [Header("Raycast")]
+    [SerializeField] 
+    private LayerMask groundLayers;
+    
+    [SerializeField] 
+    private float rayDistance = 1.0f;
 
+    [Header("Scripts and comp.")]
     [Space(10), SerializeField]
     private Player Player;
 
     [SerializeField]
     private Rigidbody2D _rigidbody;
 
-    private Vector2 moveInput;
+    private float moveInput;
 
     public void SetupControllers()
     {
@@ -24,23 +29,43 @@ public class PlayerMovement : MonoBehaviour
 
     private void OnMove(InputAction.CallbackContext movement)
     {
-        moveInput = movement.ReadValue<Vector2>();
+        moveInput = movement.ReadValue<Vector2>().x;
     }
 
     private void OnStop()
     {
-        moveInput = Vector2.zero;
+        moveInput = 0;
     }
 
     private void Jump()
     {
-        _rigidbody.AddForceY(jumpForce);
+        if (Player.IsGrounded)
+        {
+            Player.IsGrounded = false;
+            _rigidbody.AddForceY(Player.JumpForce);
+        }
+    }
+
+    public void LandOnGround()
+    {
+        if (Player.IsGrounded)
+            return;
+
+        Vector2 origin = transform.position;
+        Vector2 direction = Vector2.down;
+        
+        RaycastHit2D hit = Physics2D.Raycast(origin, direction, rayDistance, groundLayers);
+        Debug.DrawRay(origin, direction * rayDistance, Color.red);
+
+        if (hit.collider != null)
+        {
+            Player.IsGrounded = true;
+            Debug.Log("Hit ground: " + hit.collider.name);
+        }
     }
 
     private void FixedUpdate()
     {
-        var velocity = moveInput * moveSpeed;
-        velocity.y = _rigidbody.linearVelocity.y;
-        _rigidbody.linearVelocity = velocity;
+        _rigidbody.linearVelocityX = moveInput * Player.MoveSpeed;
     }
 }

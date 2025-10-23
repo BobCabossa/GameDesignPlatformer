@@ -5,6 +5,14 @@ public class Player : MonoBehaviour
     public PlayerMovement PlayerMovement;
     public PlayerCollider PlayerCollider;
 
+    [Header("Movement")]
+    public float MoveSpeed = 5f;
+    public float JumpForce = 40;
+
+    [Header("Other")]
+    public bool IsGrounded = true;
+
+    // This can't be seen in the inspector
     public InputSystemActions Controls;
 
     private void Awake()
