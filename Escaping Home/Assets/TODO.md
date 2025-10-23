@@ -29,8 +29,8 @@ Follow the player and have a stop point at the end of the map and the start of t
 
 ### Enemies
 
-- Kill player
-- Dies in death zone
+- Kill player - DONE
+- Dies in death zone - DONE
 - Types
     - Simple walk
     - Flying
