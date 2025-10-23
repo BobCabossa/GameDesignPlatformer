@@ -18,13 +18,13 @@ Make a working loading screne...
 - Moving platforms - DONE
 
 ### Player
-- Die from death zone - Half done
+- Die from death zone - DONE
 - Move - DONE
-- 1 hit ko
-- power up?
-- Move with the moving platforms
+- 1 hit ko - DONE
+- power up? - Can't come up with something right now
+- Move with the moving platforms - Player need to move with it, insted of they are moving together.
 
-### Camera movement
+### Camera movement - DONE
 Follow the player and have a stop point at the end of the map and the start of the map
 
 ### Enemies
