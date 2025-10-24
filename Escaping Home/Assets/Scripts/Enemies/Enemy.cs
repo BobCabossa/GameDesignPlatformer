@@ -15,4 +15,10 @@ public class Enemy : MonoBehaviour
             collision.GetComponent<Player>().Die();
         }
     }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Player"))
+            collision.gameObject.GetComponent<Player>().Die();
+    }
 }
