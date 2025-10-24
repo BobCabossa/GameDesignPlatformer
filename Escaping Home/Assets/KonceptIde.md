@@ -1,20 +1,20 @@
-# Game Design Dokument
+# Koncept Ide
 
 ## Name
 Escaping Home
 
 ## 📖 Tema og Verden
 Tema:
-- Endet starter man på en farm. 
+- Man start på en farm, som er fanget i det 2000 århundrede 
 
 Verden:
-- Det er en fremtiden verden.
+- Det er en fremtidens verden, sat i det 3500 århundrede
 
 ## 🎯 Formål og Mål
 Mål: 
-- Gennemføre all levels, har ingen ide om hvor mange levels der skal være.
-- Genemføre et level ved at komme hen til enden.
-- Man taber hvis du dør eller bliver fanget af fjenderne, 
+- Gennemføre all levels, har ingen ide om hvor mange levels der skal være
+- Genemføre et level ved at komme hen til enden
+- Man taber hvis du dør eller bliver fanget af fjenderne 
 
 Formål:
 - Spillerne prøver at løbe hjemmefra
