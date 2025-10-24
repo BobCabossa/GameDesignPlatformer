@@ -1,6 +1,6 @@
 # Koncept Ide
 
-## Name
+## Navn
 Escaping Home
 
 ## 📖 Tema og Verden
