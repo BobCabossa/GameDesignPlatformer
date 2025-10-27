@@ -54,6 +54,7 @@ public class SceneLoader : MonoBehaviour
         if (string.IsNullOrEmpty(SceneToLoad))
             return;
 
+        Time.timeScale = 1;
         await LoadAsyncScene();
     }
 
@@ -75,21 +76,15 @@ public class SceneLoader : MonoBehaviour
             await Task.Yield();
         }
 
-        // Give the spinner a bit of time to show
         await Task.Delay(250);
 
         audioListener.enabled = false;
-
-        // Activate the new scene
         operation.allowSceneActivation = true;
 
-        // Wait until it's loaded
         while (!operation.isDone)
             await Task.Yield();
 
-        // Unload the loading scene
-        canvas.SetActive(false);
-        await SceneManager.UnloadSceneAsync("LoadingScene");
+        //await SceneManager.UnloadSceneAsync("LoadingScene");
     }
 
     private void Update()

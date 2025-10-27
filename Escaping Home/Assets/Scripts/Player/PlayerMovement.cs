@@ -35,8 +35,11 @@ public class PlayerMovement : MonoBehaviour
         if (Player.IsGrounded && !Player.Jumped)
         {
             Player.Jumped = true;
-            _rigidbody.linearVelocityY = 0;
-            _rigidbody.AddForceY(Player.JumpForce);
+            if (_rigidbody != null)
+            {
+                _rigidbody.linearVelocityY = 0;
+                _rigidbody.AddForceY(Player.JumpForce);
+            }
         }
     }
 

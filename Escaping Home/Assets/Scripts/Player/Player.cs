@@ -1,4 +1,6 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour
 {
@@ -21,8 +23,10 @@ public class Player : MonoBehaviour
     private void Awake()
     {
         Controls = new();
+        Controls.Player.Pause.performed += OnPause;
         PlayerMovement.SetupControllers();
     }
+
     private void OnEnable()
     {
         PlayerNormalCollider.enabled = true;
@@ -37,6 +41,34 @@ public class Player : MonoBehaviour
         PlayerTriggerCollider.enabled = false;
         PlayerMovement.enabled = false;
         Controls.Player.Disable();
+    }
+
+    private void OnPause(InputAction.CallbackContext movement)
+    {
+        PauseMenu menu = FindAnyObjectByType<PauseMenu>();
+
+        if (menu == null)
+        {
+            Debug.Log("No pause menu in sceen");
+            return;
+        }
+
+        ToogleControlls();
+        menu.Open();
+    }
+
+    public void ToogleControlls()
+    {
+        if (Controls.Player.enabled)
+        {
+            Controls.Player.Disable();
+            Controls.UI.Enable();
+        }
+        else
+        {
+            Controls.Player.Enable();
+            Controls.UI.Disable();
+        }
     }
 
     public void Die()
