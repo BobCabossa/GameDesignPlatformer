@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class PlayerCollider : MonoBehaviour
+public class PlayerNormalCollider : MonoBehaviour
 {
     public Player Player;
 
@@ -13,13 +13,6 @@ public class PlayerCollider : MonoBehaviour
         else if (collision.CompareTag("WinZone"))
         {
             Debug.Log("Player won this level!");
-        }
-    }
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        if (collision.gameObject.CompareTag("Ground"))
-        {
-            Player.PlayerMovement.LandOnGround();
         }
     }
 }

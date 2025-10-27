@@ -1,22 +1,31 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using System.Threading.Tasks;
+using TMPro;
 
 public class SceneLoader : MonoBehaviour
 {
     private static string SceneToLoad = string.Empty;
-
     public RectTransform SpinningThing;
     public float rotationSpeed = 5;
 
     [Space(10)]
-    public Text progressText;
+    public TextMeshProUGUI progressText;
     public Slider progressBar;
 
-    public static void LoadScene(string sceneName)
+    [Space(10)]
+    public GameObject canvas;
+    public AudioListener audioListener;
+
+    public static async void LoadScene(string sceneName)
     {
         SceneToLoad = sceneName;
-        LoadPreviousScene();
+
+        // Load loading scene additively so we don't block
+        AsyncOperation loadingSceneOp = SceneManager.LoadSceneAsync("LoadingScene", LoadSceneMode.Additive);
+        while (!loadingSceneOp.isDone)
+            await Task.Yield();
     }
 
     public static void LoadPreviousScene()
@@ -30,20 +39,31 @@ public class SceneLoader : MonoBehaviour
         SceneManager.LoadScene("LoadingScene");
     }
 
-    private void Start()
+    private void Awake()
     {
-        // Automatically start loading the next scene
-        LoadAsyncScene();
+        var listeners = FindObjectsByType<AudioListener>(FindObjectsSortMode.None);
+        foreach (var listener in listeners)
+        {
+            listener.enabled = false;
+        }
     }
 
-    private async void LoadAsyncScene()
+    private async void Start()
+    {
+        // Only start if we have a target scene
+        if (string.IsNullOrEmpty(SceneToLoad))
+            return;
+
+        await LoadAsyncScene();
+    }
+
+    private async Task LoadAsyncScene()
     {
         AsyncOperation operation = SceneManager.LoadSceneAsync(SceneToLoad);
         operation.allowSceneActivation = false;
 
-        while (!operation.isDone)
+        while (operation.progress < 0.9f)
         {
-            // Calculate progress (goes from 0 to 0.9)
             float progress = Mathf.Clamp01(operation.progress / 0.9f);
 
             if (progressBar != null)
@@ -52,23 +72,29 @@ public class SceneLoader : MonoBehaviour
             if (progressText != null)
                 progressText.text = (progress * 100f).ToString("F0") + "%";
 
-            // Update unity / completes the frame
-            await Awaitable.NextFrameAsync();
-
-            // Activate the scene when fully loaded
-            if (operation.progress >= 0.9f)
-                break;
+            await Task.Yield();
         }
 
-        // To allow the loader to show
-        await Awaitable.WaitForSecondsAsync(0.25f);
+        // Give the spinner a bit of time to show
+        await Task.Delay(250);
 
+        audioListener.enabled = false;
+
+        // Activate the new scene
         operation.allowSceneActivation = true;
+
+        // Wait until it's loaded
+        while (!operation.isDone)
+            await Task.Yield();
+
+        // Unload the loading scene
+        canvas.SetActive(false);
+        await SceneManager.UnloadSceneAsync("LoadingScene");
     }
 
-    private void FixedUpdate()
+    private void Update()
     {
-        float newRotation = SpinningThing.rotation.z + rotationSpeed;
-        SpinningThing.Rotate(0, 0, newRotation);
+        if (SpinningThing != null)
+            SpinningThing.Rotate(0, 0, rotationSpeed * Time.deltaTime);
     }
 }

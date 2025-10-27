@@ -3,13 +3,6 @@ using UnityEngine.InputSystem;
 
 public class PlayerMovement : MonoBehaviour
 {
-    [Header("Raycast")]
-    [SerializeField] 
-    private LayerMask groundLayers;
-    
-    [SerializeField] 
-    private float rayDistance = 1.0f;
-
     [Header("Scripts and comp.")]
     [Space(10), SerializeField]
     private Player Player;
@@ -18,7 +11,7 @@ public class PlayerMovement : MonoBehaviour
     private Rigidbody2D _rigidbody;
 
     private float moveInput;
-
+    
     public void SetupControllers()
     {
         Player.Controls.Player.Move.performed += OnMove;
@@ -39,27 +32,11 @@ public class PlayerMovement : MonoBehaviour
 
     private void Jump()
     {
-        if (Player.IsGrounded)
+        if (Player.IsGrounded && !Player.Jumped)
         {
-            Player.IsGrounded = false;
+            Player.Jumped = true;
+            _rigidbody.linearVelocityY = 0;
             _rigidbody.AddForceY(Player.JumpForce);
-        }
-    }
-
-    public void LandOnGround()
-    {
-        if (Player.IsGrounded)
-            return;
-
-        Vector2 origin = transform.position;
-        Vector2 direction = Vector2.down;
-        
-        RaycastHit2D hit = Physics2D.Raycast(origin, direction, rayDistance, groundLayers);
-        Debug.DrawRay(origin, direction * rayDistance, Color.red);
-
-        if (hit.collider != null)
-        {
-            Player.IsGrounded = true;
         }
     }
 
