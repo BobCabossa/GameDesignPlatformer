@@ -29,8 +29,6 @@ public class PauseMenu : MonoBehaviour
         {
             player.Controls.UI.Close.performed += _ => Close();
         }
-
-        childToMove.localPosition = menuHidePlacement;
     }
 
     public void Open()
