@@ -28,11 +28,24 @@ public class PauseMenu : MonoBehaviour
 
     private Player player;
 
+    public void RestartLevel() => SceneLoader.LoadPreviousScene();
+    public void BackToMainMenu() => SceneLoader.LoadScene(ScreneNames.MainMenu.ToString());
+    public void ExiGame() => StartMenu.Quit();
+
     private void Awake()
     {
         background.SetActive(false);
         Scene scene = SceneManager.GetActiveScene();
         LevelText.text = AddSpacesToSentence(scene.name);
+    }
+    
+    private void Start()
+    {
+        player = FindAnyObjectByType<Player>();
+        if (player != null)
+        {
+            player.Controls.UI.Close.performed += _ => Close();
+        }
     }
 
     public static string AddSpacesToSentence(string text)
@@ -41,15 +54,6 @@ public class PauseMenu : MonoBehaviour
             return string.Empty;
 
         return Regex.Replace(text, "(?<!^)([A-Z])", " $1");
-    }
-
-    private void Start()
-    {
-        player = FindAnyObjectByType<Player>();
-        if (player != null)
-        {
-            player.Controls.UI.Close.performed += _ => Close();
-        }
     }
 
     public void Open()
@@ -66,21 +70,6 @@ public class PauseMenu : MonoBehaviour
         background.SetActive(false);
         pauseState = States.Closing;
         player.ToogleControlls();
-    }
-
-    public void RestartLevel()
-    {
-        SceneLoader.LoadPreviousScene();
-    }
-
-    public void BackToMainMenu()
-    {
-        SceneLoader.LoadScene(ScreneNames.MainMenu.ToString());
-    }
-
-    public void ExiGame()
-    {
-        StartMenu.Quit();
     }
 
     private void Update()
