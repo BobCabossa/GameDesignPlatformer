@@ -32,7 +32,7 @@ Follow the player and have a stop point at the end of the map and the start of t
 - Kill player - DONE
 - Dies in death zone - DONE
 - Types
-    - Simple walker
+    - Simple walker - DONE
     - Smart walker
     - Flying
     - Spawner
@@ -41,14 +41,14 @@ Follow the player and have a stop point at the end of the map and the start of t
 
 ## Pause menu
 
-### Loader
+### Loader - DONE
 - Add progress text
 
 ### Menu
-- Puase the game
-- Title
-- Sub title: level (with name level?)
-- Btn:
+- Puase the game - DONE
+- Title - DONE
+- Sub title: level (with name level?) - DONE
+- Btn: - DONE
     - "Resume"
     - "Exit level"
     - "Restart"?
