@@ -9,6 +9,7 @@ public class PauseMenu : MonoBehaviour
         Open,
         Opening
     }
+    public GameObject background;
 
     public Transform childToMove;
     public States pauseState = States.Closed;
@@ -21,6 +22,11 @@ public class PauseMenu : MonoBehaviour
     public Vector3 menuHidePlacement;
 
     private Player player;
+
+    private void Awake()
+    {
+        background.SetActive(false);
+    }
 
     private void Start()
     {
@@ -35,12 +41,14 @@ public class PauseMenu : MonoBehaviour
     {
         childToMove.localPosition = menuHidePlacement;
         Time.timeScale = 0;
+        background.SetActive(true);
         pauseState = States.Opening;
     }
 
     public void Close()
     {
         Time.timeScale = 1;
+        background.SetActive(false);
         pauseState = States.Closing;
         player.ToogleControlls();
     }

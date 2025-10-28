@@ -116,6 +116,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f81f02a9c28be0428eb2b6d6365406c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PauseMenu
+  background: {fileID: 5550709897882179336}
   childToMove: {fileID: 9165048098858566026}
   pauseState: 0
   speed: 10
