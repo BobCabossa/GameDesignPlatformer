@@ -10,8 +10,7 @@ public class PlayerTriggerCollider : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Ground"))
         {
-            Player.IsGrounded = true;
-            Player.Jumped = false;
+            Player.jumpState = Player.JumpState.Grounded;
             JumpCoyoteTime = Player.JumpCoyoteTime;
         }
     }
@@ -20,22 +19,22 @@ public class PlayerTriggerCollider : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Ground"))
         {
-            if (Player.Jumped)
+            if (Player.jumpState == Player.JumpState.Grounded)
             {
-                Player.IsGrounded = false;
+                Player.jumpState = Player.JumpState.CoyoteTime;
             }
         }
     }
 
     private void FixedUpdate()
     {
-        if (!Player.IsGrounded && !Player.Jumped)
+        if (Player.jumpState == Player.JumpState.CoyoteTime)
         {
             JumpCoyoteTime -= Time.deltaTime;
             if (JumpCoyoteTime <= 0)
             {
                 JumpCoyoteTime = Player.JumpCoyoteTime;
-                Player.IsGrounded = false;
+                Player.jumpState = Player.JumpState.Jumping;
             }
         }
     }

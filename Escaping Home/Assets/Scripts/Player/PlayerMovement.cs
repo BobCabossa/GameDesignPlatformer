@@ -7,11 +7,8 @@ public class PlayerMovement : MonoBehaviour
     [Space(10), SerializeField]
     private Player Player;
 
-    [SerializeField]
-    private Rigidbody2D _rigidbody;
-
     private float moveInput;
-    
+
     public void SetupControllers()
     {
         Player.Controls.Player.Move.performed += OnMove;
@@ -32,19 +29,16 @@ public class PlayerMovement : MonoBehaviour
 
     private void Jump()
     {
-        if (Player.IsGrounded && !Player.Jumped)
+        if (Player.jumpState != Player.JumpState.Jumping)
         {
-            Player.Jumped = true;
-            if (_rigidbody != null)
-            {
-                _rigidbody.linearVelocityY = 0;
-                _rigidbody.AddForceY(Player.JumpForce);
-            }
+            Player.jumpState = Player.JumpState.Jumping;
+            Player.Rigidbody.linearVelocityY = 0;
+            Player.Rigidbody.AddForceY(Player.JumpForce);
         }
     }
 
     private void FixedUpdate()
     {
-        _rigidbody.linearVelocityX = moveInput * Player.MoveSpeed;
+        Player.Rigidbody.linearVelocityX = moveInput * Player.MoveSpeed;
     }
 }

@@ -3,18 +3,28 @@ using UnityEngine.InputSystem;
 
 public class Player : MonoBehaviour
 {
+    public enum JumpState
+    {
+        Grounded,
+        Jumping,
+        CoyoteTime
+    }
+
+    [Header("Plaer scripts")]
     public PlayerMovement PlayerMovement;
     public PlayerNormalCollider PlayerNormalCollider;
     public PlayerTriggerCollider PlayerTriggerCollider;
 
     [Header("Movement")]
     public float MoveSpeed = 5f;
+
+    [Space(5)]
+    public JumpState jumpState = JumpState.Grounded;
     public float JumpForce = 40;
     public float JumpCoyoteTime = 0.2f;
 
     [Header("Other")]
-    public bool IsGrounded = true;
-    public bool Jumped = false;
+    public Rigidbody2D Rigidbody;
 
     // This can't be seen in the inspector
     public InputSystemActions Controls;
@@ -40,6 +50,11 @@ public class Player : MonoBehaviour
         PlayerTriggerCollider.enabled = false;
         PlayerMovement.enabled = false;
         Controls.Player.Disable();
+    }
+
+    private void OnDestroy()
+    {
+        Controls.Dispose();
     }
 
     private void OnPause(InputAction.CallbackContext movement)
