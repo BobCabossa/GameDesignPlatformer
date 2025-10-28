@@ -15,13 +15,30 @@ public class MovingPlatform : MonoBehaviour
     [SerializeField]
     private Transform endpoint;
 
+    [Space(10), Tooltip("Don't manually asign, only for debugging!")]
+    public Transform player;
+
     private Vector3 targetPoint;
+    private Vector3 lastPlatformPosition;
     private bool forward = true;
 
     private void Start()
     {
         platform.position = startpoint.position;
         targetPoint = endpoint.position;
+        lastPlatformPosition = platform.position;
+    }
+
+    private void Update()
+    {
+        Vector3 delta = platform.position - lastPlatformPosition;
+
+        if (player != null)
+        {
+            player.position += delta;
+        }
+        
+        lastPlatformPosition = platform.position;
     }
 
     private void FixedUpdate()
