@@ -10,6 +10,15 @@ public class UpMovingPlatformCollider : MonoBehaviour
             return;
 
         if (Platform != null) 
-            Platform.StartMoving();
+            Platform.StartMoving(collision.gameObject);
+    }
+
+    private void OnCollisionExit2D(Collision2D collision)
+    {
+        if (!collision.gameObject.CompareTag("Player"))
+            return;
+
+        if (Platform != null)
+            Platform.StartMoving(null);
     }
 }

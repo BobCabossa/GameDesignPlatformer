@@ -53214,11 +53214,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1235472645948317851, guid: a480d4b5f689b54458834a4f8e4bd77e, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -2.5
+      value: -1.5
       objectReference: {fileID: 0}
     - target: {fileID: 1235472645948317851, guid: a480d4b5f689b54458834a4f8e4bd77e, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -2
+      value: -2.2
       objectReference: {fileID: 0}
     - target: {fileID: 1235472645948317851, guid: a480d4b5f689b54458834a4f8e4bd77e, type: 3}
       propertyPath: m_LocalPosition.z
@@ -53492,6 +53492,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2541346776513084019, guid: adeb4980dc3e1674fa1ee411ee4fe829, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 24
+      objectReference: {fileID: 0}
     - target: {fileID: 5867283495628166211, guid: adeb4980dc3e1674fa1ee411ee4fe829, type: 3}
       propertyPath: m_LocalPosition.x
       value: 110
@@ -53610,7 +53614,7 @@ SceneRoots:
   - {fileID: 196761853527443588}
   - {fileID: 1175297601}
   - {fileID: 6539109786722315769}
+  - {fileID: 5634151086321885246}
   - {fileID: 4751731142229938221}
   - {fileID: 4530050585072166836}
   - {fileID: 751239825}
-  - {fileID: 5634151086321885246}

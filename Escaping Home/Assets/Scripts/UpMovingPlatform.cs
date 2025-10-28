@@ -2,48 +2,87 @@ using UnityEngine;
 
 public class UpMovingPlatform : MonoBehaviour
 {
-    public enum States
-    {
-        Idle,
-        Up,
-        Down
-    }
+    public enum States { Idle, Up, Down }
 
-    public float speed;
+    public float speed = 5;
+    public float delayBeforeMoving = 1;
 
-    [Header("Don't touch")]
-    public Transform platform;
+    [Header("Don't touch!")]
+    public Rigidbody2D platformRigidbody;
     public Transform startPoint;
     public Transform endPoint;
 
-    public States state;
+    [Header("Debug values.")]
+    public float delay = 0;
+    public bool playerOnPlatform = false;
+    public States state = States.Idle;
+    public States oldState = States.Idle;
 
-    public void StartMoving()
+    private void SetState(States newState)
     {
-        state = States.Up;
+        oldState = state;
+        state = newState;
     }
+
+    public void StartMoving(GameObject player)
+    {
+        playerOnPlatform = player != null;
+        if (state == States.Idle)
+        {
+            delay = delayBeforeMoving;
+            SetState(States.Up);
+        }
+    }
+
+    // To wait for the player to move off the platform, then move down
+    private void Update()
+    {
+        //if (delay == delayBeforeMoving) return;
+        if (playerOnPlatform)
+        {
+            if (state == States.Idle && oldState == States.Down)
+            {
+                SetState(States.Up);
+            }
+            return;
+        }
+        
+        if (state != States.Idle) return;
+
+        if (oldState == States.Up)
+        {
+            state = States.Down;
+            oldState = States.Idle;
+        }
+    }
+
 
     private void FixedUpdate()
     {
         switch (state)
         {
-            default: break;
             case States.Up:
-                Move(endPoint.position, States.Down);
+                Move(endPoint.position);
                 break;
             case States.Down:
-                Move(startPoint.position, States.Idle);
+                Move(startPoint.position);
                 break;
+            default: break;
         }
     }
 
-    private void Move(Vector3 targetPoint, States onSuccess)
+    private void Move(Vector2 targetPoint)
     {
+        delay -= Time.deltaTime;
+        if (delay > 0) return;
+
         float step = speed * Time.deltaTime;
-        platform.position = Vector3.MoveTowards(platform.position, targetPoint, step);
-        if (Vector3.Distance(platform.position, targetPoint) < 0.001f)
+        platformRigidbody.MovePosition(Vector2.MoveTowards(platformRigidbody.position, targetPoint, step));
+        if (Vector2.Distance(platformRigidbody.position, targetPoint) < 0.001f)
         {
-            state = onSuccess;
+            FindAnyObjectByType<Player>().Rigidbody.linearVelocityY = 0f;
+            SetState(States.Idle);
+            delay = delayBeforeMoving;
         }
     }
 }
