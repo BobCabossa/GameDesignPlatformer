@@ -38,17 +38,11 @@ public class Player : MonoBehaviour
 
     private void OnEnable()
     {
-        PlayerNormalCollider.enabled = true;
-        PlayerTriggerCollider.enabled = true;
-        PlayerMovement.enabled = true;
         Controls.Player.Enable();
     }
 
     private void OnDisable()
     {
-        PlayerNormalCollider.enabled = false;
-        PlayerTriggerCollider.enabled = false;
-        PlayerMovement.enabled = false;
         Controls.Player.Disable();
     }
 
