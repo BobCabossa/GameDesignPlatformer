@@ -81,7 +81,6 @@ public class Player : MonoBehaviour
 
     public void Die()
     {
-        Debug.Log("Player Died");
         SceneLoader.LoadPreviousScene();
     }
 }

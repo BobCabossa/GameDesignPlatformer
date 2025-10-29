@@ -111,6 +111,10 @@ PrefabInstance:
       propertyPath: m_Color.r
       value: 0.15374154
       objectReference: {fileID: 0}
+    - target: {fileID: 4917012568322132157, guid: 50d154345e777e148a661f15fddcac14, type: 3}
+      propertyPath: m_SortingOrder
+      value: 14
+      objectReference: {fileID: 0}
     - target: {fileID: 5286213685891123467, guid: 50d154345e777e148a661f15fddcac14, type: 3}
       propertyPath: m_Name
       value: EnemySpawner
@@ -159,6 +163,7 @@ MonoBehaviour:
   enemyPrefab: {fileID: 5275504310125611559, guid: b3dc4444c59d78441aaf06bfe8e2bef2, type: 3}
   CooldownTime: 10
   SpawningSpeed: 0.73
+  SpawningToTheLeft: 1
 --- !u!61 &4458283586360940709
 BoxCollider2D:
   m_ObjectHideFlags: 0

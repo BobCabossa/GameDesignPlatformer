@@ -8,6 +8,7 @@ public abstract class Enemy : MonoBehaviour
     public SpriteRenderer SpriteRenderer;
     public Collider2D Collider;
 
+    /// <summary> This get called at the end of <see cref="TurnAround"/> </summary>
     protected abstract void ChildTurnAround();
 
     private void OnTriggerEnter2D(Collider2D collision)
