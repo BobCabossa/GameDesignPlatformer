@@ -33,7 +33,7 @@ Follow the player and have a stop point at the end of the map and the start of t
 - Dies in death zone - DONE
 - Types
     - Simple walker - DONE
-    - Smart walker
+    - Smart walker - DONE
     - Flying
     - Spawner
     - Jumping?

@@ -1,8 +1,13 @@
 using UnityEngine;
 
-public class Enemy : MonoBehaviour
+public abstract class Enemy : MonoBehaviour
 {
     public float moveSpeed = 1;
+
+    public Transform WallChecker;
+    public SpriteRenderer SpriteRenderer;
+
+    protected abstract void ChildTurnAround();
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -19,6 +24,21 @@ public class Enemy : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("Player"))
+        {
             collision.gameObject.GetComponent<Player>().Die();
+        }
+    }
+
+    public void TurnAround()
+    {
+        SpriteRenderer.flipX = !SpriteRenderer.flipX;
+        TurnTransform(WallChecker);
+        ChildTurnAround();
+    }
+
+    protected void TurnTransform(Transform transform)
+    {
+        Vector2 turnPoint = new(transform.localPosition.x * -1, transform.localPosition.y);
+        transform.localPosition = turnPoint;
     }
 }

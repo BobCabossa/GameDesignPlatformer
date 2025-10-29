@@ -6,11 +6,10 @@ public class SmartWalker : Enemy
     public Transform smartCollider;
     private bool walkingRight = false;
 
-    public void TurnAround()
+    protected override void ChildTurnAround()
     {
         walkingRight = !walkingRight;
-        Vector2 turnPoint = new(smartCollider.localPosition.x * -1, smartCollider.localPosition.y);
-        smartCollider.localPosition = turnPoint;
+        TurnTransform(smartCollider);
     }
 
     private void FixedUpdate()
