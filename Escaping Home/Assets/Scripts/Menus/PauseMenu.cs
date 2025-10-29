@@ -58,7 +58,6 @@ public class PauseMenu : MonoBehaviour
 
     public void Open()
     {
-        childToMove.localPosition = menuHidePlacement;
         Time.timeScale = 0;
         background.SetActive(true);
         pauseState = States.Opening;

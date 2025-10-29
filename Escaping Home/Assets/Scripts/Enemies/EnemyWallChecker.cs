@@ -10,5 +10,9 @@ public class EnemyWallChecker : MonoBehaviour
         {
             Enemy.TurnAround();
         }
+        else if (collision.CompareTag("Enemy"))
+        {
+            Enemy.TurnAround();
+        }
     }
 }
