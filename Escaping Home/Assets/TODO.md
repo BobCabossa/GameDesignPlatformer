@@ -34,7 +34,7 @@ Follow the player and have a stop point at the end of the map and the start of t
 - Types
     - Simple walker - DONE
     - Smart walker - DONE
-    - Flying
+    - Flying - DONE
     - Spawner - DONE
     - Jumping?
     - Simple shooter?
