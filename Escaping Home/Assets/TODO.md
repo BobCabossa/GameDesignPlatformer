@@ -35,7 +35,7 @@ Follow the player and have a stop point at the end of the map and the start of t
     - Simple walker - DONE
     - Smart walker - DONE
     - Flying
-    - Spawner
+    - Spawner - DONE
     - Jumping?
     - Simple shooter?
 

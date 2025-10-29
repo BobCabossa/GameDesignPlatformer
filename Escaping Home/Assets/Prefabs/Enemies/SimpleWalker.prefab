@@ -64,6 +64,11 @@ PrefabInstance:
       insertIndex: 1
       addedObject: {fileID: 3370266474567776441}
   m_SourcePrefab: {fileID: 100100000, guid: 50d154345e777e148a661f15fddcac14, type: 3}
+--- !u!70 &831105823170560836 stripped
+CapsuleCollider2D:
+  m_CorrespondingSourceObject: {fileID: 856407653110906984, guid: 50d154345e777e148a661f15fddcac14, type: 3}
+  m_PrefabInstance: {fileID: 29902794337878828}
+  m_PrefabAsset: {fileID: 0}
 --- !u!50 &4254300759026628019 stripped
 Rigidbody2D:
   m_CorrespondingSourceObject: {fileID: 4278538869449291423, guid: 50d154345e777e148a661f15fddcac14, type: 3}
@@ -99,4 +104,5 @@ MonoBehaviour:
   moveSpeed: 1
   WallChecker: {fileID: 5155513053087167894}
   SpriteRenderer: {fileID: 4924264598417558417}
+  Collider: {fileID: 831105823170560836}
   _rigidbody: {fileID: 4254300759026628019}

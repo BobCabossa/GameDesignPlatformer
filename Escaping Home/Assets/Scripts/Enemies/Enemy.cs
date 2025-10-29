@@ -6,6 +6,7 @@ public abstract class Enemy : MonoBehaviour
 
     public Transform WallChecker;
     public SpriteRenderer SpriteRenderer;
+    public Collider2D Collider;
 
     protected abstract void ChildTurnAround();
 
