@@ -29,8 +29,8 @@ public class PauseMenu : MonoBehaviour
     private Player player;
 
     public void RestartLevel() => SceneLoader.LoadPreviousScene();
-    public void BackToMainMenu() => SceneLoader.LoadScene(ScreneNames.MainMenu.ToString());
-    public void ExiGame() => StartMenu.Quit();
+    public void BackToMainMenu() => SceneLoader.LoadScene(ScreneNames.MainMenu);
+    public void ExiGame() => MainMenuController.Quit();
 
     private void Awake()
     {

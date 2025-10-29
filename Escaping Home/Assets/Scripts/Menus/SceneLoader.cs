@@ -18,12 +18,16 @@ public class SceneLoader : MonoBehaviour
     public GameObject canvas;
     public AudioListener audioListener;
 
-    public static async void LoadScene(string sceneName)
+    public static bool FirstLoad() => string.IsNullOrEmpty(SceneToLoad);
+    
+    public static async void LoadScene(ScreneNames sceneName)
     {
-        SceneToLoad = sceneName;
+        SceneToLoad = sceneName.ToString();
 
         // Load loading scene additively so we don't block
-        AsyncOperation loadingSceneOp = SceneManager.LoadSceneAsync("LoadingScene", LoadSceneMode.Additive);
+        AsyncOperation loadingSceneOp = SceneManager.LoadSceneAsync(
+            ScreneNames.LoadingScene.ToString(), LoadSceneMode.Additive);
+
         while (!loadingSceneOp.isDone)
             await Task.Yield();
     }
@@ -36,7 +40,7 @@ public class SceneLoader : MonoBehaviour
             return;
         }
         
-        SceneManager.LoadScene("LoadingScene");
+        SceneManager.LoadScene(ScreneNames.LoadingScene.ToString());
     }
 
     private void Awake()

@@ -189,7 +189,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fa5b2cd0d6bde4f4a9f6efa7b5c1a3db, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::FlyingEnemy
-  moveSpeed: 0.001
+  moveSpeed: 0.035
   WallChecker: {fileID: 1866123556723524549}
   SpriteRenderer: {fileID: 1891303201063124418}
   Collider: {fileID: 6188347096430540055}
