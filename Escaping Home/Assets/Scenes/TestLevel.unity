@@ -60799,6 +60799,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4924264598417558417, guid: b3dc4444c59d78441aaf06bfe8e2bef2, type: 3}
+      propertyPath: m_FlipY
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5275504310125611559, guid: b3dc4444c59d78441aaf06bfe8e2bef2, type: 3}
       propertyPath: m_Name
       value: SimpleWalker
@@ -61286,5 +61290,5 @@ SceneRoots:
   - {fileID: 6539109786722315769}
   - {fileID: 5634151086321885246}
   - {fileID: 2038276577}
-  - {fileID: 751239825}
   - {fileID: 1129045320}
+  - {fileID: 751239825}
