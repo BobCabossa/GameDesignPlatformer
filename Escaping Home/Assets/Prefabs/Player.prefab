@@ -70,6 +70,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerMovement
   Player: {fileID: 2509380520276335421}
+  rayOrigin: {fileID: 1235472645948317851}
+  rayDistance: 0.45
+  rayVerticalSpacing: 0.5
 --- !u!50 &1297920435088900462
 Rigidbody2D:
   serializedVersion: 5
