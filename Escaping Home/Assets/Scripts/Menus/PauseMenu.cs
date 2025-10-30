@@ -1,7 +1,8 @@
-﻿using System.Text.RegularExpressions;
-using UnityEngine.SceneManagement;
-using UnityEngine;
+﻿using System.Net;
+using System.Text.RegularExpressions;
 using TMPro;
+using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PauseMenu : MonoBehaviour
 {
@@ -15,6 +16,7 @@ public class PauseMenu : MonoBehaviour
 
     public TextMeshProUGUI LevelText;
     public GameObject background;
+    public GameObject WinScreen;
 
     public Transform childToMove;
     public States pauseState = States.Closed;
@@ -34,11 +36,12 @@ public class PauseMenu : MonoBehaviour
 
     private void Awake()
     {
+        WinScreen.SetActive(false);
         background.SetActive(false);
         Scene scene = SceneManager.GetActiveScene();
         LevelText.text = AddSpacesToSentence(scene.name);
     }
-    
+
     private void Start()
     {
         player = FindAnyObjectByType<Player>();
@@ -54,6 +57,12 @@ public class PauseMenu : MonoBehaviour
             return string.Empty;
 
         return Regex.Replace(text, "(?<!^)([A-Z])", " $1");
+    }
+
+    public void PlayerWon()
+    {
+        background.SetActive(true);
+        WinScreen.SetActive(true);
     }
 
     public void Open()

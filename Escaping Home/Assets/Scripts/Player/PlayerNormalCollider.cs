@@ -12,7 +12,8 @@ public class PlayerNormalCollider : MonoBehaviour
         }
         else if (collision.CompareTag("WinZone"))
         {
-            Debug.Log("Player won this level!");
+            Destroy(Player.gameObject);
+            Player.Win();
         }
     }
 }

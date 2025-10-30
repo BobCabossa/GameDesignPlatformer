@@ -60,7 +60,7 @@ public class Player : MonoBehaviour
 
         if (menu == null)
         {
-            Debug.Log("No pause menu in sceen");
+            Debug.Log("No game menu in scene!");
             return;
         }
 
@@ -80,6 +80,20 @@ public class Player : MonoBehaviour
             Controls.Player.Enable();
             Controls.UI.Disable();
         }
+    }
+
+    public void Win()
+    {
+        PauseMenu menu = FindAnyObjectByType<PauseMenu>();
+
+        if (menu == null)
+        {
+            Debug.Log("No game menu in scene!");
+            return;
+        }
+
+        Controls.Disable();
+        menu.PlayerWon();
     }
 
     public void Die()
