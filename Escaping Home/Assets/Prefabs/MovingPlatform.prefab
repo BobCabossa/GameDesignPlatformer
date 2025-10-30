@@ -258,11 +258,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MovingPlatform
   speed: 1
+  pauseTime: 1
   platform: {fileID: 1063129681749415807}
   rigidbody: {fileID: 7414401557107723350}
   startpoint: {fileID: 392966963989678735}
   endpoint: {fileID: 1192605257413970245}
-  player: {fileID: 0}
+  GizmorColor: {r: 0, g: 1, b: 1, a: 1}
+  GizmorRadius: 0.35
+  Player: {fileID: 0}
 --- !u!1 &8521343638189295175
 GameObject:
   m_ObjectHideFlags: 0

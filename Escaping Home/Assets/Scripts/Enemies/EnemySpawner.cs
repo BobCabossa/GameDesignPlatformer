@@ -4,7 +4,7 @@ public class EnemySpawner : MonoBehaviour
 {
     private enum States { Cooldown, Spawning }
 
-    public Transform spawnDonePoint;
+    public Vector2 spawnDonePoint;
 
     [Space(10)]
     public GameObject enemyPrefab;
@@ -16,6 +16,14 @@ public class EnemySpawner : MonoBehaviour
     private float realCooldown = 0;
     private States state = States.Cooldown;
     private Enemy EnemySpawning;
+    private Transform enemyRoot;
+
+    private Vector2 GetSpawnPoint() => (Vector2)transform.position + spawnDonePoint;
+
+    private void Awake()
+    {
+        enemyRoot = transform.root;
+    }
 
     private void FixedUpdate()
     {
@@ -34,13 +42,16 @@ public class EnemySpawner : MonoBehaviour
 
     private void Spawning()
     {
+        if (EnemySpawning == null) return;
+        
+        Vector2 spawnPoint = GetSpawnPoint();
         Transform transform = EnemySpawning.transform;
         transform.position = Vector2.MoveTowards(
             transform.position,
-            spawnDonePoint.position,
+            spawnPoint,
             SpawningSpeed);
 
-        if (Vector2.Distance(transform.position, spawnDonePoint.position) < 0.001f)
+        if (Vector2.Distance(transform.position, spawnPoint) < 0.001f)
         {
             state = States.Cooldown;
             EnemySpawning.Collider.enabled = true;
@@ -65,7 +76,7 @@ public class EnemySpawner : MonoBehaviour
     private void SpawnEnemy()
     {
         // Spawns the enemy
-        GameObject newEnemy = Instantiate(enemyPrefab);
+        GameObject newEnemy = Instantiate(enemyPrefab, enemyRoot);
         
         // Making the spawned enemy ready to be plads inside spawner
         EnemySpawning = newEnemy.GetComponent<Enemy>();
@@ -79,5 +90,14 @@ public class EnemySpawner : MonoBehaviour
 
         // Moves the enemy
         newEnemy.transform.position = transform.position;
+    }
+
+    private void OnDrawGizmos()
+    {
+        if (spawnDonePoint != null)
+        {
+            Gizmos.color = GizmosSettings.Color;
+            Gizmos.DrawSphere(GetSpawnPoint(), GizmosSettings.Radius);
+        }
     }
 }

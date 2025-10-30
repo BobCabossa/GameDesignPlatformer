@@ -4,7 +4,7 @@ public class MovingPlatform : MonoBehaviour
 {
     public float speed = 1f;
 
-    [SerializeField] 
+    [SerializeField]
     private float pauseTime = 1f;
     private float pauseTimer;
 
@@ -22,13 +22,6 @@ public class MovingPlatform : MonoBehaviour
 
     private Transform target;
 
-    [Header("Gizmos")]
-    [SerializeField]
-    private Color GizmorColor = Color.cyan;
-
-    [SerializeField]
-    private float GizmorRadius = 0.5f;
-
     public Player Player;
 
     private void Awake()
@@ -43,11 +36,21 @@ public class MovingPlatform : MonoBehaviour
         target = endpoint;
     }
 
+    public void TurnAround()
+    {
+        if (pauseTimer <= 0)
+            target = target == startpoint ? endpoint : startpoint;
+    }
+
     // Using late update to update after the player
-    private void LateUpdate()
+    private void FixedUpdate()
     {
         if (pauseTimer > 0)
         {
+            if (Player != null)
+            {
+                Player.PlayerMovement.SetPlatformVelocity(Vector2.zero);
+            }
             pauseTimer -= Time.fixedDeltaTime;
             return;
         }
@@ -66,7 +69,7 @@ public class MovingPlatform : MonoBehaviour
 
         if (Vector2.Distance(newPosition, targetPosition) < 0.01f)
         {
-            target = target == startpoint ? endpoint : startpoint;
+            TurnAround();
             pauseTimer = pauseTime;
         }
     }
@@ -76,10 +79,10 @@ public class MovingPlatform : MonoBehaviour
     {
         if (startpoint != null && endpoint != null)
         {
-            Gizmos.color = GizmorColor;
+            Gizmos.color = GizmosSettings.Color;
             Gizmos.DrawLine(startpoint.position, endpoint.position);
-            Gizmos.DrawSphere(startpoint.position, GizmorRadius);
-            Gizmos.DrawSphere(endpoint.position, GizmorRadius);
+            Gizmos.DrawSphere(startpoint.position, GizmosSettings.Radius);
+            Gizmos.DrawSphere(endpoint.position, GizmosSettings.Radius);
         }
     }
 }

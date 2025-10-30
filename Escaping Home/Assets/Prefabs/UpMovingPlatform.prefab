@@ -56,7 +56,7 @@ Transform:
   m_GameObject: {fileID: 6597415781444435877}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 15, z: 0}
+  m_LocalPosition: {x: 0, y: 2, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -297,3 +297,5 @@ MonoBehaviour:
   playerOnPlatform: 0
   state: 0
   oldState: 0
+  GizmorColor: {r: 0, g: 1, b: 1, a: 1}
+  GizmorRadius: 0.35

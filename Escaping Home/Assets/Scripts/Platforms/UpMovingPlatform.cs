@@ -13,10 +13,17 @@ public class UpMovingPlatform : MonoBehaviour
     public Transform endPoint;
 
     [Header("Debug values.")]
-    public float delay = 0;
-    public bool playerOnPlatform = false;
-    public States state = States.Idle;
-    public States oldState = States.Idle;
+    [SerializeField]
+    private float delay = 0;
+
+    [SerializeField]
+    private bool playerOnPlatform = false;
+    
+    [SerializeField]
+    private States state = States.Idle;
+
+    [SerializeField]
+    private States oldState = States.Idle;
 
     private void SetState(States newState)
     {
@@ -83,6 +90,18 @@ public class UpMovingPlatform : MonoBehaviour
             FindAnyObjectByType<Player>().Rigidbody.linearVelocityY = 0f;
             SetState(States.Idle);
             delay = delayBeforeMoving;
+        }
+    }
+
+    // Debugging and setup
+    private void OnDrawGizmos()
+    {
+        if (startPoint != null && endPoint != null)
+        {
+            Gizmos.color = GizmosSettings.Color;
+            Gizmos.DrawLine(startPoint.position, endPoint.position);
+            Gizmos.DrawSphere(startPoint.position, GizmosSettings.Radius);
+            Gizmos.DrawSphere(endPoint.position, GizmosSettings.Radius);
         }
     }
 }
