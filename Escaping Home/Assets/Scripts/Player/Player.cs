@@ -41,17 +41,17 @@ public class Player : MonoBehaviour
 
     private void OnEnable()
     {
-        Controls.Player.Enable();
+        Controls?.Player.Enable();
     }
 
     private void OnDisable()
     {
-        Controls.Player.Disable();
+        Controls?.Player.Disable();
     }
 
     private void OnDestroy()
     {
-        Controls.Dispose();
+        Controls?.Dispose();
     }
 
     private void OnPause(InputAction.CallbackContext movement)

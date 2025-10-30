@@ -62,6 +62,7 @@ public class PlayerMovement : MonoBehaviour
     {
         float move = moveInput * Player.MoveSpeed;
         float velocityX = (AllowPlayerToMove(move) ? move : 0) + platformVelocity.x;
+
         Player.Rigidbody.linearVelocityX = velocityX;
         Player.Rigidbody.linearVelocityY += platformVelocity.y;
     }
