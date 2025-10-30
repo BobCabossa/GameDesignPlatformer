@@ -18,6 +18,7 @@ public class SceneLoader : MonoBehaviour
     public GameObject canvas;
     public AudioListener audioListener;
 
+    public static void SetSceneToActiveScene() => SceneToLoad = SceneManager.GetActiveScene().name;
     public static bool FirstLoad() => string.IsNullOrEmpty(SceneToLoad);
     
     public static async void LoadScene(ScreneNames sceneName)

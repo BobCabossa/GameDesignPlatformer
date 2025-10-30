@@ -31,6 +31,9 @@ public class Player : MonoBehaviour
 
     private void Awake()
     {
+        if (SceneLoader.FirstLoad())
+            SceneLoader.SetSceneToActiveScene();
+
         Controls = new();
         Controls.Player.Pause.performed += OnPause;
         PlayerMovement.SetupControllers();
