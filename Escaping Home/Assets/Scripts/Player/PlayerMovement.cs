@@ -18,6 +18,7 @@ public class PlayerMovement : MonoBehaviour
 
     private float moveInput;
     private int wallLayerMask;
+    private Vector2 platformVelocity;
 
     private void Start()
     {
@@ -30,6 +31,11 @@ public class PlayerMovement : MonoBehaviour
         Player.Controls.Player.Move.canceled += _ => OnStop();
 
         Player.Controls.Player.Jump.performed += _ => Jump();
+    }
+
+    public void SetPlatformVelocity(Vector2 velocity)
+    {
+        platformVelocity = velocity;
     }
 
     private void OnMove(InputAction.CallbackContext movement)
@@ -55,7 +61,9 @@ public class PlayerMovement : MonoBehaviour
     private void FixedUpdate()
     {
         float move = moveInput * Player.MoveSpeed;
-        Player.Rigidbody.linearVelocityX = AllowPlayerToMove(move) ? move : 0;
+        float velocityX = (AllowPlayerToMove(move) ? move : 0) + platformVelocity.x;
+        Player.Rigidbody.linearVelocityX = velocityX;
+        Player.Rigidbody.linearVelocityY += platformVelocity.y;
     }
 
     private bool AllowPlayerToMove(float move)

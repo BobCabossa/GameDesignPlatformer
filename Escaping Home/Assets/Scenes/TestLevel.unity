@@ -74981,7 +74981,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1235472645948317851, guid: a480d4b5f689b54458834a4f8e4bd77e, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1.14
+      value: -1.21
       objectReference: {fileID: 0}
     - target: {fileID: 1235472645948317851, guid: a480d4b5f689b54458834a4f8e4bd77e, type: 3}
       propertyPath: m_LocalPosition.z
@@ -75332,6 +75332,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1394830318}
     m_Modifications:
+    - target: {fileID: 1063129681749415807, guid: a71733a1430285648a821ad7b0305800, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 6.61
+      objectReference: {fileID: 0}
     - target: {fileID: 1192605257413970245, guid: a71733a1430285648a821ad7b0305800, type: 3}
       propertyPath: m_LocalPosition.x
       value: 11
@@ -75375,6 +75379,10 @@ PrefabInstance:
     - target: {fileID: 2046369695672401653, guid: a71733a1430285648a821ad7b0305800, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6548514879799368094, guid: a71733a1430285648a821ad7b0305800, type: 3}
+      propertyPath: GizmorRadius
+      value: 0.25
       objectReference: {fileID: 0}
     - target: {fileID: 7118985025845074622, guid: a71733a1430285648a821ad7b0305800, type: 3}
       propertyPath: m_Name

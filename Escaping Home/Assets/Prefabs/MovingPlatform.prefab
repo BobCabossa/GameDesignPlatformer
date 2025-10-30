@@ -43,6 +43,7 @@ GameObject:
   - component: {fileID: 4845692779259425282}
   - component: {fileID: 7133674754616798765}
   - component: {fileID: 3829309829790886452}
+  - component: {fileID: 7414401557107723350}
   m_Layer: 3
   m_Name: Platform
   m_TagString: Ground
@@ -182,6 +183,33 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!50 &7414401557107723350
+Rigidbody2D:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6761346563412436857}
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDamping: 0
+  m_AngularDamping: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 6
 --- !u!1 &7118985025845074622
 GameObject:
   m_ObjectHideFlags: 0
@@ -231,6 +259,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::MovingPlatform
   speed: 1
   platform: {fileID: 1063129681749415807}
+  rigidbody: {fileID: 7414401557107723350}
   startpoint: {fileID: 392966963989678735}
   endpoint: {fileID: 1192605257413970245}
   player: {fileID: 0}
