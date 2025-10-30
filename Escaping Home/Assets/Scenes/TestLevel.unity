@@ -455,7 +455,7 @@ CompositeCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
@@ -1220,7 +1220,7 @@ CompositeCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
@@ -75305,12 +75305,16 @@ PrefabInstance:
     m_TransformParent: {fileID: 1580454376}
     m_Modifications:
     - target: {fileID: 169594283068975289, guid: 4e8d70a45818ea0459158ba67da2840c, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.01
+      objectReference: {fileID: 0}
+    - target: {fileID: 169594283068975289, guid: 4e8d70a45818ea0459158ba67da2840c, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 129.61719
+      value: 129.62
       objectReference: {fileID: 0}
     - target: {fileID: 169594283068975289, guid: 4e8d70a45818ea0459158ba67da2840c, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -2.65008
+      value: -2.65
       objectReference: {fileID: 0}
     - target: {fileID: 169594283068975289, guid: 4e8d70a45818ea0459158ba67da2840c, type: 3}
       propertyPath: m_LocalPosition.z
@@ -75362,6 +75366,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 1580454376}
     m_Modifications:
     - target: {fileID: 3989383914280707513, guid: b3dc4444c59d78441aaf06bfe8e2bef2, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.75
+      objectReference: {fileID: 0}
+    - target: {fileID: 3989383914280707513, guid: b3dc4444c59d78441aaf06bfe8e2bef2, type: 3}
       propertyPath: m_LocalPosition.x
       value: 31.37
       objectReference: {fileID: 0}
@@ -75379,15 +75387,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3989383914280707513, guid: b3dc4444c59d78441aaf06bfe8e2bef2, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3989383914280707513, guid: b3dc4444c59d78441aaf06bfe8e2bef2, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3989383914280707513, guid: b3dc4444c59d78441aaf06bfe8e2bef2, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3989383914280707513, guid: b3dc4444c59d78441aaf06bfe8e2bef2, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -75607,11 +75615,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1235472645948317851, guid: a480d4b5f689b54458834a4f8e4bd77e, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -35.5
+      value: -37.5
       objectReference: {fileID: 0}
     - target: {fileID: 1235472645948317851, guid: a480d4b5f689b54458834a4f8e4bd77e, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1.21
+      value: -1.25
       objectReference: {fileID: 0}
     - target: {fileID: 1235472645948317851, guid: a480d4b5f689b54458834a4f8e4bd77e, type: 3}
       propertyPath: m_LocalPosition.z
@@ -75810,7 +75818,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 165224429815461230, guid: 6bb72118366a2774486b264c67897bdd, type: 3}
       propertyPath: m_Name
-      value: PauseMenu
+      value: GameMenu
       objectReference: {fileID: 0}
     - target: {fileID: 475441425808668501, guid: 6bb72118366a2774486b264c67897bdd, type: 3}
       propertyPath: m_Pivot.x
@@ -76013,10 +76021,6 @@ PrefabInstance:
     - target: {fileID: 2046369695672401653, guid: a71733a1430285648a821ad7b0305800, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6548514879799368094, guid: a71733a1430285648a821ad7b0305800, type: 3}
-      propertyPath: GizmorRadius
-      value: 0.25
       objectReference: {fileID: 0}
     - target: {fileID: 7118985025845074622, guid: a71733a1430285648a821ad7b0305800, type: 3}
       propertyPath: m_Name
