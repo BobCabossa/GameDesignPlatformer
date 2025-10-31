@@ -18,9 +18,8 @@ public class LevelSelectButton : MonoBehaviour
     {
         string levelTitle = LevelTitle;
         if (string.IsNullOrWhiteSpace(LevelTitle))
-        {
             levelTitle = PauseMenu.AddSpacesToSentence(LevelName.ToString());
-        }
+        
         if (titleText != null)
             titleText.text = levelTitle;
     }
