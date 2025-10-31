@@ -1,6 +1,10 @@
 ﻿public enum ScreneNames
 {
-    LoadingScene,
     MainMenu,
-    TestLevel,
+    LoadingScene,
+
+    // Levels
+    TestLevel, // Keep as a easter egg.
+    LevelOne,
+    LevelTwo,
 }
