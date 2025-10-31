@@ -21,6 +21,7 @@ public class LevelSelectButton : MonoBehaviour
         {
             levelTitle = PauseMenu.AddSpacesToSentence(LevelName.ToString());
         }
-        titleText.text = levelTitle;
+        if (titleText != null)
+            titleText.text = levelTitle;
     }
 }
