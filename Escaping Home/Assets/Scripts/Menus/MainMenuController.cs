@@ -3,6 +3,7 @@ using UnityEngine;
 public class MainMenuController : MonoBehaviour
 {
     public GameObject StartMenu;
+    public GameObject Settings;
     public GameObject LevelSelectorMenu;
 
     private void Awake()
@@ -10,6 +11,7 @@ public class MainMenuController : MonoBehaviour
         bool firstLoad = SceneLoader.FirstLoad();
         StartMenu.SetActive(firstLoad);
         LevelSelectorMenu.SetActive(!firstLoad);
+        Settings.SetActive(false);
     }
 
     public void StartGame()
@@ -18,8 +20,15 @@ public class MainMenuController : MonoBehaviour
         LevelSelectorMenu.SetActive(true);
     }
 
+    public void OpenSettings()
+    {
+        StartMenu.SetActive(false);
+        Settings.SetActive(true);
+    }
+
     public void BackToMainMenu()
     {
+        Settings.SetActive(false);
         LevelSelectorMenu.SetActive(false);
         StartMenu.SetActive(true);
     }

@@ -1,3 +1,4 @@
+using UnityEditor.ShaderGraph;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -34,7 +35,7 @@ public class Player : MonoBehaviour
         if (SceneLoader.FirstLoad())
             SceneLoader.SetSceneToActiveScene();
 
-        Controls = new();
+        CreateControls();
         Controls.Player.Pause.performed += OnPause;
         PlayerMovement.SetupControllers();
     }
@@ -52,6 +53,16 @@ public class Player : MonoBehaviour
     private void OnDestroy()
     {
         Controls?.Dispose();
+    }
+
+    public void CreateControls()
+    {
+        Controls = new();
+        if (PlayerPrefs.HasKey("rebinds"))
+        {
+            string json = PlayerPrefs.GetString("rebinds");
+            Controls.asset.LoadBindingOverridesFromJson(json);
+        }
     }
 
     private void OnPause(InputAction.CallbackContext movement)
