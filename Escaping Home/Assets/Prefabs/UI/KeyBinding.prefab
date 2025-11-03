@@ -145,7 +145,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5439665857171905727}
-  - component: {fileID: 3780787077514612534}
+  - component: {fileID: 2489390966354361512}
   m_Layer: 5
   m_Name: KeyBinding
   m_TagString: Untagged
@@ -174,7 +174,7 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &3780787077514612534
+--- !u!114 &2489390966354361512
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -183,11 +183,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 8158057817026539004}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3adf4c06950422f48ac850be585c73d2, type: 3}
+  m_Script: {fileID: 11500000, guid: 73d3b34bb2e7a2e4abf49c34944c95f0, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::RebindUIEntry
-  actionPath: Player/
-  bindingIndex: 0
+  m_EditorClassIdentifier: Assembly-CSharp::RebindUIEntryBtn
   rebindButton: {fileID: 2358646956401308605}
   bindingDisplayText: {fileID: 4076321633168064682}
 --- !u!1001 &3701472389052008364

@@ -32,11 +32,11 @@ public class RebindingUI : MonoBehaviour
             }
 
             // Update label
-            entry.bindingDisplayText.text = GetBindingDisplayName(action, entry.bindingIndex);
+            entry.btn.bindingDisplayText.text = GetBindingDisplayName(action, entry.bindingIndex);
 
             // Add button listener
-            entry.rebindButton.onClick.RemoveAllListeners();
-            entry.rebindButton.onClick.AddListener(() => StartRebind(entry));
+            entry.btn.rebindButton.onClick.RemoveAllListeners();
+            entry.btn.rebindButton.onClick.AddListener(() => StartRebind(entry));
         }
     }
 
@@ -59,7 +59,7 @@ public class RebindingUI : MonoBehaviour
             return;
         }
 
-        entry.bindingDisplayText.text = "Press any key...";
+        entry.btn.bindingDisplayText.text = "Press any key...";
         action.Disable();
 
         rebindOperation = action.PerformInteractiveRebinding(entry.bindingIndex)
@@ -74,7 +74,7 @@ public class RebindingUI : MonoBehaviour
         rebindOperation.Dispose();
         action.Enable();
 
-        entry.bindingDisplayText.text = GetBindingDisplayName(action, entry.bindingIndex);
+        entry.btn.bindingDisplayText.text = GetBindingDisplayName(action, entry.bindingIndex);
         SaveRebinds();
     }
 
