@@ -12,6 +12,7 @@ public class RebindingUI : MonoBehaviour
     [SerializeField]
     private List<RebindUIEntry> rebindEntries = new();
 
+    private Dictionary<InputAction, string> _originalBindingPaths = new();
     private InputActionRebindingExtensions.RebindingOperation rebindOperation;
     private Player player;
 
@@ -56,17 +57,19 @@ public class RebindingUI : MonoBehaviour
     private void StartRebind(RebindUIEntry entry)
     {
         var action = inputActionsAsset.FindAction(entry.actionPath);
+        int index = entry.actionBindingIndex;
         if (action == null)
         {
             Debug.LogError($"Action '{entry.actionPath}' not found in asset!");
             return;
         }
 
+        _originalBindingPaths[action] = action.bindings[index].effectivePath;
         entry.btn.bindingDisplayText.text = "Press any key...";
         action.Disable();
 
-        rebindOperation = action.PerformInteractiveRebinding(entry.actionBindingIndex)
-            .WithControlsExcluding("Mouse") // optional
+        rebindOperation = action.PerformInteractiveRebinding(index)
+            .WithControlsExcluding("Mouse")
             .OnMatchWaitForAnother(0.1f)
             .OnComplete(op => RebindComplete(entry, action))
             .Start();
@@ -74,17 +77,35 @@ public class RebindingUI : MonoBehaviour
 
     private void RebindComplete(RebindUIEntry entry, InputAction action)
     {
+        InputControl control = rebindOperation.selectedControl;
         rebindOperation.Dispose();
         action.Enable();
 
-        MirrorRebind(entry, action);
+        CheckToSwap(control, entry, action);
+        MirrorRebindToUI(entry, action);
         SaveRebinds();
         LoadRebinds();
-
-        entry.btn.bindingDisplayText.text = GetBindingDisplayName(action, entry.actionBindingIndex);
+        InitializeUI();
     }
 
-    private void MirrorRebind(RebindUIEntry entry, InputAction action)
+    private void CheckToSwap(InputControl control, RebindUIEntry entry, InputAction action)
+    {
+        if (!RebindingValidator.IsControlAlreadyUsed(inputActionsAsset, control, action,
+            out InputAction conflictAction, out int conflictIndex))
+        {
+            return;
+        }
+
+        string conflictPath = conflictAction.bindings[conflictIndex].effectivePath;
+        string oldPath = _originalBindingPaths.ContainsKey(action)
+            ? _originalBindingPaths[action]
+            : action.bindings[entry.actionBindingIndex].effectivePath; // fallback
+
+        action.ApplyBindingOverride(entry.actionBindingIndex, conflictPath);
+        conflictAction.ApplyBindingOverride(conflictIndex, oldPath);
+    }
+
+    private void MirrorRebindToUI(RebindUIEntry entry, InputAction action)
     {
         if (string.IsNullOrEmpty(entry.uiPath))
             return;
