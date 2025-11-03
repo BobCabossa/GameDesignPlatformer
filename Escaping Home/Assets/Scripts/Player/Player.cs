@@ -103,8 +103,8 @@ public class Player : MonoBehaviour
             return;
         }
 
-        Controls.Disable();
         menu.PlayerWon();
+        Level.IfBeatHighestSave();
     }
 
     public void Die()

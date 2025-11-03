@@ -20,7 +20,8 @@ public class SceneLoader : MonoBehaviour
 
     public static void SetSceneToActiveScene() => SceneToLoad = SceneManager.GetActiveScene().name;
     public static bool FirstLoad() => string.IsNullOrEmpty(SceneToLoad);
-    
+    public static string GetSceneName() => SceneToLoad;
+
     public static async void LoadScene(ScreneNames sceneName)
     {
         SceneToLoad = sceneName.ToString();

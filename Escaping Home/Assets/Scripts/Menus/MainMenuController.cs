@@ -4,20 +4,23 @@ public class MainMenuController : MonoBehaviour
 {
     public GameObject StartMenu;
     public GameObject Settings;
-    public GameObject LevelSelectorMenu;
+    public LevelSelector LevelSelectorMenu;
 
     private void Awake()
     {
         bool firstLoad = SceneLoader.FirstLoad();
-        StartMenu.SetActive(firstLoad);
-        LevelSelectorMenu.SetActive(!firstLoad);
         Settings.SetActive(false);
+        StartMenu.SetActive(firstLoad);
+
+        LevelSelectorMenu.gameObject.SetActive(!firstLoad);
+        if (!firstLoad)
+            LevelSelectorMenu.Open();
     }
 
     public void StartGame()
     {
         StartMenu.SetActive(false);
-        LevelSelectorMenu.SetActive(true);
+        LevelSelectorMenu.Open();
     }
 
     public void OpenSettings()
@@ -29,7 +32,7 @@ public class MainMenuController : MonoBehaviour
     public void BackToMainMenu()
     {
         Settings.SetActive(false);
-        LevelSelectorMenu.SetActive(false);
+        LevelSelectorMenu.gameObject.SetActive(false);
         StartMenu.SetActive(true);
     }
 
