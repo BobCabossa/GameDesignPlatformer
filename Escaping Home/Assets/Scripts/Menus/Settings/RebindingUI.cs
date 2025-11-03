@@ -12,7 +12,7 @@ public class RebindingUI : MonoBehaviour
     [SerializeField]
     private List<RebindUIEntry> rebindEntries = new();
 
-    private Dictionary<InputAction, string> _originalBindingPaths = new();
+    private readonly Dictionary<InputAction, string> _originalBindingPaths = new();
     private InputActionRebindingExtensions.RebindingOperation rebindOperation;
     private Player player;
 
@@ -97,9 +97,14 @@ public class RebindingUI : MonoBehaviour
         }
 
         string conflictPath = conflictAction.bindings[conflictIndex].effectivePath;
-        string oldPath = _originalBindingPaths.ContainsKey(action)
-            ? _originalBindingPaths[action]
-            : action.bindings[entry.actionBindingIndex].effectivePath; // fallback
+        if (_originalBindingPaths.TryGetValue(action, out string oldPath))
+        {
+            _originalBindingPaths.Remove(action);
+        }
+        else
+        {
+            oldPath = action.bindings[entry.actionBindingIndex].effectivePath;
+        }
 
         action.ApplyBindingOverride(entry.actionBindingIndex, conflictPath);
         conflictAction.ApplyBindingOverride(conflictIndex, oldPath);
