@@ -5,19 +5,22 @@ using System.Collections.Generic;
 public class RebindingUI : MonoBehaviour
 {
     [Header("Input Settings")]
-    [SerializeField] 
+    [SerializeField]
     private InputActionAsset inputActionsAsset;
 
     [Header("Bindings to Manage")]
-    [SerializeField] 
+    [SerializeField]
     private List<RebindUIEntry> rebindEntries = new();
 
     private InputActionRebindingExtensions.RebindingOperation rebindOperation;
+    private Player player;
 
     private void Awake()
     {
         LoadRebinds();
         InitializeUI();
+
+        player = FindAnyObjectByType<Player>();
     }
 
     private void InitializeUI()
@@ -32,7 +35,7 @@ public class RebindingUI : MonoBehaviour
             }
 
             // Update label
-            entry.btn.bindingDisplayText.text = GetBindingDisplayName(action, entry.bindingIndex);
+            entry.btn.bindingDisplayText.text = GetBindingDisplayName(action, entry.actionBindingIndex);
 
             // Add button listener
             entry.btn.rebindButton.onClick.RemoveAllListeners();
@@ -62,7 +65,7 @@ public class RebindingUI : MonoBehaviour
         entry.btn.bindingDisplayText.text = "Press any key...";
         action.Disable();
 
-        rebindOperation = action.PerformInteractiveRebinding(entry.bindingIndex)
+        rebindOperation = action.PerformInteractiveRebinding(entry.actionBindingIndex)
             .WithControlsExcluding("Mouse") // optional
             .OnMatchWaitForAnother(0.1f)
             .OnComplete(op => RebindComplete(entry, action))
@@ -74,8 +77,21 @@ public class RebindingUI : MonoBehaviour
         rebindOperation.Dispose();
         action.Enable();
 
-        entry.btn.bindingDisplayText.text = GetBindingDisplayName(action, entry.bindingIndex);
+        MirrorRebind(entry, action);
         SaveRebinds();
+        LoadRebinds();
+
+        entry.btn.bindingDisplayText.text = GetBindingDisplayName(action, entry.actionBindingIndex);
+    }
+
+    private void MirrorRebind(RebindUIEntry entry, InputAction action)
+    {
+        if (string.IsNullOrEmpty(entry.uiPath))
+            return;
+
+        var uiAction = inputActionsAsset.FindAction(entry.uiPath);
+        var path = action.bindings[entry.uiBindingIndex].effectivePath;
+        uiAction.ApplyBindingOverride(entry.uiBindingIndex, path);
     }
 
     private void SaveRebinds()
@@ -86,10 +102,14 @@ public class RebindingUI : MonoBehaviour
 
     private void LoadRebinds()
     {
-        if (PlayerPrefs.HasKey("rebinds"))
+        if (!PlayerPrefs.HasKey("rebinds"))
+            return;
+
+        string rebinds = PlayerPrefs.GetString("rebinds");
+        inputActionsAsset.LoadBindingOverridesFromJson(rebinds);
+        if (player != null)
         {
-            string rebinds = PlayerPrefs.GetString("rebinds");
-            inputActionsAsset.LoadBindingOverridesFromJson(rebinds);
+            player.Controls.LoadBindingOverridesFromJson(rebinds);
         }
     }
 

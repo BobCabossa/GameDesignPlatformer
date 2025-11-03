@@ -345,19 +345,27 @@ MonoBehaviour:
   rebindEntries:
   - Name: Left
     actionPath: Player/move
-    bindingIndex: 1
+    actionBindingIndex: 1
+    uiPath: 
+    uiBindingIndex: 0
     btn: {fileID: 4682387254965500129}
   - Name: Right
     actionPath: Player/move
-    bindingIndex: 2
+    actionBindingIndex: 2
+    uiPath: 
+    uiBindingIndex: 0
     btn: {fileID: 1910961829712071064}
   - Name: Jump
     actionPath: Player/Jump
-    bindingIndex: 0
+    actionBindingIndex: 0
+    uiPath: 
+    uiBindingIndex: 0
     btn: {fileID: 3937027394293604483}
   - Name: Pause
     actionPath: Player/Pause
-    bindingIndex: 0
+    actionBindingIndex: 0
+    uiPath: UI/Close
+    uiBindingIndex: 0
     btn: {fileID: 1820333364998402236}
 --- !u!1001 &1386307785845783697
 PrefabInstance:
