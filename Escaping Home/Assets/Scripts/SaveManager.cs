@@ -3,13 +3,13 @@ using UnityEngine;
 
 public static class SaveManager
 {
+    // Localtion: %appdata%\..\LocalLow\DefaultCompany\Escaping Home
     private static string SavePath => Path.Combine(Application.persistentDataPath, "save.json");
 
     public static void Save(GameData data)
     {
         string json = JsonUtility.ToJson(data, true);
         File.WriteAllText(SavePath, json);
-        Debug.Log($"Saved to {SavePath}");
     }
 
     public static GameData Load()

@@ -33,7 +33,7 @@ public class WinScreen : MonoBehaviour
             if (delayBeforeGoingBack <= 0)
             {
                 notLoading = false;
-                SceneLoader.LoadScene(ScreneNames.MainMenu);
+                SceneLoader.LoadScene(SceneNames.MainMenu);
             }
         }
     }

@@ -4,7 +4,7 @@ using UnityEngine;
 public class LevelSelectButton : MonoBehaviour
 {
     public string LevelTitle;
-    public ScreneNames LevelName = ScreneNames.TestLevel;
+    public SceneNames LevelName = SceneNames.TestLevel;
 
     [Space(10)]
     public TextMeshProUGUI titleText;

@@ -1,4 +1,4 @@
-﻿public enum ScreneNames
+﻿public enum SceneNames
 {
     MainMenu,
     LoadingScene,

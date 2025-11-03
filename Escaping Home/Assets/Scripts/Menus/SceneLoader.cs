@@ -22,13 +22,13 @@ public class SceneLoader : MonoBehaviour
     public static bool FirstLoad() => string.IsNullOrEmpty(SceneToLoad);
     public static string GetSceneName() => SceneToLoad;
 
-    public static async void LoadScene(ScreneNames sceneName)
+    public static async void LoadScene(SceneNames sceneName)
     {
         SceneToLoad = sceneName.ToString();
 
         // Load loading scene additively so we don't block
         AsyncOperation loadingSceneOp = SceneManager.LoadSceneAsync(
-            ScreneNames.LoadingScene.ToString(), LoadSceneMode.Additive);
+            SceneNames.LoadingScene.ToString(), LoadSceneMode.Additive);
 
         while (!loadingSceneOp.isDone)
             await Task.Yield();
@@ -42,7 +42,7 @@ public class SceneLoader : MonoBehaviour
             return;
         }
         
-        SceneManager.LoadScene(ScreneNames.LoadingScene.ToString());
+        SceneManager.LoadScene(SceneNames.LoadingScene.ToString());
     }
 
     private void Awake()
