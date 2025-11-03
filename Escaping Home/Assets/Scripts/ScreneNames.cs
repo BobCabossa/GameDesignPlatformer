@@ -3,8 +3,9 @@
     MainMenu,
     LoadingScene,
 
-    // Levels
     TestLevel, // Keep as a easter egg.
+
+    // Levels
     LevelOne,
     LevelTwo,
 }

@@ -1,34 +1,27 @@
-﻿using System.Net;
-using System.Text.RegularExpressions;
-using TMPro;
+﻿using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using System.Text.RegularExpressions;
 
 public class PauseMenu : MonoBehaviour
 {
-    public enum States
+    private enum GameMenuOpen
     {
-        Closed,
-        Closing,
-        Open,
-        Opening
+        None,
+        Normal,
+        Settings,
+        Win
     }
 
     public TextMeshProUGUI LevelText;
+
+    public MenuMover pauseMenu;
     public GameObject background;
     public GameObject WinScreen;
-
-    public Transform childToMove;
-    public States pauseState = States.Closed;
-
-    [Space(10)]
-    public float speed = 10f;
-
-    [Space(10)]
-    public Vector3 menuShowPlacement;
-    public Vector3 menuHidePlacement;
+    public MenuMover Settings;
 
     private Player player;
+    private GameMenuOpen menuOpen = GameMenuOpen.None;
 
     public void RestartLevel() => SceneLoader.LoadPreviousScene();
     public void BackToMainMenu() => SceneLoader.LoadScene(ScreneNames.MainMenu);
@@ -38,6 +31,7 @@ public class PauseMenu : MonoBehaviour
     {
         WinScreen.SetActive(false);
         background.SetActive(false);
+
         Scene scene = SceneManager.GetActiveScene();
         LevelText.text = AddSpacesToSentence(scene.name);
     }
@@ -47,7 +41,21 @@ public class PauseMenu : MonoBehaviour
         player = FindAnyObjectByType<Player>();
         if (player != null)
         {
-            player.Controls.UI.Close.performed += _ => Close();
+            player.Controls.UI.Close.performed += _ => OnPLayerClose();
+        }
+    }
+
+    private void OnPLayerClose()
+    {
+        switch (menuOpen)
+        {
+            case GameMenuOpen.Normal:
+                Close();
+                break;
+            case GameMenuOpen.Settings:
+                CloseSettings();
+                break;
+            default: break;
         }
     }
 
@@ -61,6 +69,8 @@ public class PauseMenu : MonoBehaviour
 
     public void PlayerWon()
     {
+        player.Controls.Disable();
+        menuOpen = GameMenuOpen.Win;
         background.SetActive(true);
         WinScreen.SetActive(true);
     }
@@ -69,39 +79,28 @@ public class PauseMenu : MonoBehaviour
     {
         Time.timeScale = 0;
         background.SetActive(true);
-        pauseState = States.Opening;
+        pauseMenu.Open();
+        menuOpen = GameMenuOpen.Normal;
     }
 
     public void Close()
     {
         Time.timeScale = 1;
         background.SetActive(false);
-        pauseState = States.Closing;
+        pauseMenu.Close();
         player.ToogleControlls();
+        menuOpen = GameMenuOpen.None;
     }
 
-    private void Update()
+    public void OpenSettings()
     {
-        switch (pauseState)
-        {
-            case States.Closing:
-                Move(menuHidePlacement, States.Closed);
-                break;
-            case States.Opening:
-                Move(menuShowPlacement, States.Open);
-                break;
-            default:
-                break;
-        }
+        menuOpen = GameMenuOpen.Settings;
+        Settings.Open();
     }
 
-    private void Move(Vector3 towards, States onSuccess)
+    public void CloseSettings()
     {
-        childToMove.localPosition = Vector3.MoveTowards(childToMove.localPosition, towards, speed);
-        if (Vector3.Distance(childToMove.localPosition, towards) <= 0.01f)
-        {
-            childToMove.localPosition = towards;
-            pauseState = onSuccess;
-        }
+        menuOpen = GameMenuOpen.Normal;
+        Settings.Close();
     }
 }
