@@ -127,7 +127,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 1
   m_Sprite: {fileID: -708342582, guid: a23f54adab67920458862a541970689b, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.5566038, g: 0.2284176, b: 0.36108863, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -263,8 +263,6 @@ MonoBehaviour:
   rigidbody: {fileID: 7414401557107723350}
   startpoint: {fileID: 392966963989678735}
   endpoint: {fileID: 1192605257413970245}
-  GizmorColor: {r: 0, g: 1, b: 1, a: 1}
-  GizmorRadius: 0.35
   Player: {fileID: 0}
 --- !u!1 &8521343638189295175
 GameObject:

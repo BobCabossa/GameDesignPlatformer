@@ -158,7 +158,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 1
   m_Sprite: {fileID: -708342582, guid: a23f54adab67920458862a541970689b, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.7946845, g: 0.8490566, b: 0.11614456, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -297,5 +297,3 @@ MonoBehaviour:
   playerOnPlatform: 0
   state: 0
   oldState: 0
-  GizmorColor: {r: 0, g: 1, b: 1, a: 1}
-  GizmorRadius: 0.35

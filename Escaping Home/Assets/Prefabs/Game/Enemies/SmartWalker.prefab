@@ -130,6 +130,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4917012568322132157, guid: 50d154345e777e148a661f15fddcac14, type: 3}
+      propertyPath: m_Color.b
+      value: 0.6792453
+      objectReference: {fileID: 0}
+    - target: {fileID: 4917012568322132157, guid: 50d154345e777e148a661f15fddcac14, type: 3}
+      propertyPath: m_Color.g
+      value: 0.12495552
+      objectReference: {fileID: 0}
+    - target: {fileID: 4917012568322132157, guid: 50d154345e777e148a661f15fddcac14, type: 3}
+      propertyPath: m_Color.r
+      value: 0.4425297
+      objectReference: {fileID: 0}
     - target: {fileID: 5286213685891123467, guid: 50d154345e777e148a661f15fddcac14, type: 3}
       propertyPath: m_Name
       value: SmartWalker

@@ -54,7 +54,7 @@ MonoBehaviour:
   PlayerTriggerCollider: {fileID: 2645486779595069950}
   MoveSpeed: 4
   jumpState: 0
-  JumpForce: 650
+  JumpForce: 750
   JumpCoyoteTime: 0.6
   Rigidbody: {fileID: 1297920435088900462}
 --- !u!114 &7731105340297342521
@@ -148,7 +148,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 15
   m_Sprite: {fileID: -9095717837082945937, guid: 207ee8102dd4143d288186ef0be518ee, type: 3}
-  m_Color: {r: 0.21306507, g: 0.645283, b: 0.25567812, a: 1}
+  m_Color: {r: 0.7264151, g: 0.55044174, b: 0.119927004, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
