@@ -22,4 +22,15 @@ public class FlyingEnemy : Enemy
             TurnAround();
         }
     }
+
+    private void OnDrawGizmos()
+    {
+        if (StartPoint != null && EndPoint != null)
+        {
+            Gizmos.color = GizmosSettings.Color;
+            Gizmos.DrawLine(StartPoint.position, EndPoint.position);
+            Gizmos.DrawSphere(StartPoint.position, GizmosSettings.Radius);
+            Gizmos.DrawSphere(EndPoint.position, GizmosSettings.Radius);
+        }
+    }
 }
