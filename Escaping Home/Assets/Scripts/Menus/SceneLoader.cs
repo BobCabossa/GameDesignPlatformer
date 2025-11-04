@@ -41,7 +41,7 @@ public class SceneLoader : MonoBehaviour
             Debug.LogWarning("A scene tried to be loaded without a scene name.");
             return;
         }
-        
+
         LoadScene(SceneToLoad);
     }
 
