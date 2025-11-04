@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 public class SceneLoader : MonoBehaviour
 {
-    private static string SceneToLoad = string.Empty;
+    private static SceneNames SceneToLoad = SceneNames.None;
     public RectTransform SpinningThing;
     public float rotationSpeed = 5;
 
@@ -18,13 +18,13 @@ public class SceneLoader : MonoBehaviour
     public GameObject canvas;
     public AudioListener audioListener;
 
-    public static void SetSceneToActiveScene() => SceneToLoad = SceneManager.GetActiveScene().name;
-    public static bool FirstLoad() => string.IsNullOrEmpty(SceneToLoad);
-    public static SceneNames GetSceneName() => SceneNameHelper.GetSceneName(SceneToLoad);
+    public static void SetSceneToActiveScene() => SceneToLoad = SceneNameHelper.GetSceneName(SceneManager.GetActiveScene().name);
+    public static bool FirstLoad() => SceneToLoad == SceneNames.None;
+    public static SceneNames GetSceneName() => SceneToLoad;
 
     public static async void LoadScene(SceneNames sceneName)
     {
-        SceneToLoad = sceneName.ToString();
+        SceneToLoad = sceneName;
 
         // Load loading scene additively so we don't block
         AsyncOperation loadingSceneOp = SceneManager.LoadSceneAsync(
@@ -36,13 +36,13 @@ public class SceneLoader : MonoBehaviour
 
     public static void LoadPreviousScene()
     {
-        if (SceneToLoad == string.Empty)
+        if (SceneToLoad == SceneNames.None)
         {
             Debug.LogWarning("A scene tried to be loaded without a scene name.");
             return;
         }
         
-        SceneManager.LoadScene(SceneNames.LoadingScene.ToString());
+        LoadScene(SceneToLoad);
     }
 
     private void Awake()
@@ -57,7 +57,7 @@ public class SceneLoader : MonoBehaviour
     private async void Start()
     {
         // Only start if we have a target scene
-        if (string.IsNullOrEmpty(SceneToLoad))
+        if (SceneToLoad == SceneNames.None)
             return;
 
         Time.timeScale = 1;
@@ -66,7 +66,7 @@ public class SceneLoader : MonoBehaviour
 
     private async Task LoadAsyncScene()
     {
-        AsyncOperation operation = SceneManager.LoadSceneAsync(SceneToLoad);
+        AsyncOperation operation = SceneManager.LoadSceneAsync(SceneToLoad.ToString());
         operation.allowSceneActivation = false;
 
         while (operation.progress < 0.9f)

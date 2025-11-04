@@ -2,13 +2,10 @@
 
 public static class Level
 {
-    private const int ScenesBeforeLevels = 3;
-    private const SceneNames HighestLevel = SceneNames.LevelTwo;
-
     /// <summary>
     /// Removes the menus and none main level form the enum 
     /// </summary>
-    public static int Calculate(SceneNames scene) => (int)scene - ScenesBeforeLevels;
+    public static int Calculate(SceneNames scene) => (int)scene - SceneNameHelper.ScenesBeforeLevels;
 
     public static void IfBeatHighestSave()
     {
@@ -29,8 +26,8 @@ public static class Level
         GameData gameData = SaveManager.Load();
 
         // Minus 1 get it to line up, from save.
-        int sceneIndex = gameData.highestLevelBeat + ScenesBeforeLevels - 1;
+        int sceneIndex = gameData.highestLevelBeat + SceneNameHelper.ScenesBeforeLevels - 1;
         SceneNames levelNames = SceneNameHelper.GetSceneName(sceneIndex);
-        return levelNames == HighestLevel;
+        return levelNames == SceneNameHelper.HighestLevel;
     }
 }

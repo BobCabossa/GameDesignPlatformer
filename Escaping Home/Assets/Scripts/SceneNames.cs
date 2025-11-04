@@ -2,6 +2,7 @@
 
 public enum SceneNames
 {
+    None, // Don't use, in game, it will make errors
     MainMenu,
     LoadingScene,
 
@@ -14,12 +15,15 @@ public enum SceneNames
 
 public static class SceneNameHelper
 {
+    public const int ScenesBeforeLevels = 4;
+    public const SceneNames HighestLevel = SceneNames.LevelTwo;
+
     public static SceneNames GetSceneName(string sceneName)
     {
         if (Enum.TryParse(sceneName, out SceneNames levelName))
             return levelName;
 
-        return SceneNames.MainMenu;
+        return SceneNames.None;
     }
 
     public static SceneNames GetSceneName(int sceneIndex)
@@ -27,6 +31,6 @@ public static class SceneNameHelper
         if (Enum.IsDefined(typeof(SceneNames), sceneIndex))
             return (SceneNames)sceneIndex;
 
-        return SceneNames.MainMenu;
+        return SceneNames.None;
     }
 }
