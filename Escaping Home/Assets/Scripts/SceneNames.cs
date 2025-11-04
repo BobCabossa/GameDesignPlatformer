@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 
 public enum SceneNames
 {
@@ -11,12 +12,19 @@ public enum SceneNames
     // Levels
     LevelOne,
     LevelTwo,
+    LevelThree
 }
 
 public static class SceneNameHelper
 {
     public const int ScenesBeforeLevels = 4;
-    public const SceneNames HighestLevel = SceneNames.LevelTwo;
+
+    public static SceneNames HighestLevel
+    {
+        get => Enum.GetValues(typeof(SceneNames))
+                 .Cast<SceneNames>()
+                 .Max();
+    }
 
     public static SceneNames GetSceneName(string sceneName)
     {
