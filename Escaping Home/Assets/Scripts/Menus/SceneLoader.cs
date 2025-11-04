@@ -1,8 +1,8 @@
-using UnityEngine;
-using UnityEngine.SceneManagement;
-using UnityEngine.UI;
-using System.Threading.Tasks;
 using TMPro;
+using UnityEngine;
+using UnityEngine.UI;
+using UnityEngine.SceneManagement;
+using System.Threading.Tasks;
 
 public class SceneLoader : MonoBehaviour
 {
@@ -20,7 +20,7 @@ public class SceneLoader : MonoBehaviour
 
     public static void SetSceneToActiveScene() => SceneToLoad = SceneManager.GetActiveScene().name;
     public static bool FirstLoad() => string.IsNullOrEmpty(SceneToLoad);
-    public static string GetSceneName() => SceneToLoad;
+    public static SceneNames GetSceneName() => SceneNameHelper.GetSceneName(SceneToLoad);
 
     public static async void LoadScene(SceneNames sceneName)
     {

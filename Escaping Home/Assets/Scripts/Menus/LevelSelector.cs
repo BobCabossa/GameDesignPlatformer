@@ -1,4 +1,3 @@
-using System.Collections.Generic;
 using UnityEngine;
 
 public class LevelSelector : MonoBehaviour
@@ -22,12 +21,22 @@ public class LevelSelector : MonoBehaviour
     private void InitializeUI()
     {
         GameData gameData = SaveManager.Load();
+        bool beatAllLevels = Level.BeatAllLevels();
 
         foreach (LevelSelectButton button in buttonList)
         {
             int level = Level.Calculate(button.LevelName);
             bool unlocked = level <= gameData.highestLevelBeat;
-            button.gameObject.SetActive(unlocked);
+
+            // To normal levels
+            if (button.LevelName != SceneNames.TestLevel)
+            {
+                button.gameObject.SetActive(unlocked);
+                continue;
+            }
+
+            // Only unlock if beat all levels
+            button.gameObject.SetActive(beatAllLevels);
         }
     }
 }

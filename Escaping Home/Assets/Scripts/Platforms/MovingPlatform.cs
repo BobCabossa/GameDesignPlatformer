@@ -42,7 +42,6 @@ public class MovingPlatform : MonoBehaviour
             target = target == startpoint ? endpoint : startpoint;
     }
 
-    // Using late update to update after the player
     private void FixedUpdate()
     {
         if (pauseTimer > 0)

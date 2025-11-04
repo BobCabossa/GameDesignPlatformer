@@ -9,7 +9,7 @@ public class UpMovingPlatformCollider : MonoBehaviour
         if (!collision.gameObject.CompareTag("Player"))
             return;
 
-        if (Platform != null) 
+        if (Platform != null)
             Platform.StartMoving(collision.gameObject);
     }
 
