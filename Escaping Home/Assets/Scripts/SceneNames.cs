@@ -3,22 +3,25 @@ using System.Linq;
 
 public enum SceneNames
 {
-    None, // Don't use, in game, it will make errors
+    // Don't use: it will make errors
+    // As it's only use, is as a defualt before it's asigned in a method or inspector.
+    None = -99, 
+
+    // Menues, max: 48
     MainMenu,
     LoadingScene,
 
-    TestLevel, // Keep as a easter egg.
+    // Easter eggs, max: 49
+    TestLevel = -50,
 
-    // Levels
-    LevelOne,
+    // Levels, max: unlimited
+    LevelOne = 0,
     LevelTwo,
     LevelThree
 }
 
 public static class SceneNameHelper
 {
-    public const int ScenesBeforeLevels = 4;
-
     public static SceneNames HighestLevel
     {
         get => Enum.GetValues(typeof(SceneNames))

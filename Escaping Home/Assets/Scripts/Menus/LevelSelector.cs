@@ -25,7 +25,7 @@ public class LevelSelector : MonoBehaviour
 
         foreach (LevelSelectButton button in buttonList)
         {
-            int level = Level.Calculate(button.LevelName);
+            int level = (int)button.LevelName;
             bool unlocked = level <= gameData.highestLevelBeat;
 
             // To normal levels

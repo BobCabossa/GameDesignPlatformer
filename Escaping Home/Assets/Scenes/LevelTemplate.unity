@@ -549,10 +549,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
-    - target: {fileID: 1297920435088900462, guid: a480d4b5f689b54458834a4f8e4bd77e, type: 3}
-      propertyPath: m_CollisionDetection
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2003,14 +1999,6 @@ PrefabInstance:
     - target: {fileID: 1275386643346050952, guid: a2fb2b4a9cdd841479f79824ea107f53, type: 3}
       propertyPath: m_LocalPosition.y
       value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 1293669713489360787, guid: a2fb2b4a9cdd841479f79824ea107f53, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1293669713489360787, guid: a2fb2b4a9cdd841479f79824ea107f53, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2813918891718902010, guid: a2fb2b4a9cdd841479f79824ea107f53, type: 3}
       propertyPath: target
