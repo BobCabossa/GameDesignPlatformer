@@ -52,6 +52,7 @@ MonoBehaviour:
   PlayerMovement: {fileID: 7731105340297342521}
   PlayerNormalCollider: {fileID: 7973413357304791694}
   PlayerTriggerCollider: {fileID: 2645486779595069950}
+  SecBeforePlayerGetControl: 0.25
   MoveSpeed: 4
   jumpState: 0
   JumpForce: 750

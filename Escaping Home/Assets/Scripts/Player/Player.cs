@@ -17,6 +17,8 @@ public class Player : MonoBehaviour
     public PlayerTriggerCollider PlayerTriggerCollider;
 
     [Header("Movement")]
+    public float SecBeforePlayerGetControl = 0.1f;
+
     public float MoveSpeed = 5f;
 
     [Space(5)]
@@ -36,8 +38,15 @@ public class Player : MonoBehaviour
             SceneLoader.SetSceneToActiveScene();
 
         CreateControls();
+        Controls.Disable();
         Controls.Player.Pause.performed += OnPause;
         PlayerMovement.SetupControllers();
+        _ = WaitForControlsToGoBack();
+    }
+
+    private void Start()
+    {
+        Controls.Enable();
     }
 
     private void OnEnable()
@@ -55,7 +64,13 @@ public class Player : MonoBehaviour
         Controls?.Dispose();
     }
 
-    public void CreateControls()
+    private async Awaitable WaitForControlsToGoBack()
+    {
+        await Awaitable.WaitForSecondsAsync(SecBeforePlayerGetControl);
+        Controls.Enable();
+    }
+
+    private void CreateControls()
     {
         Controls = new();
         if (PlayerPrefs.HasKey("rebinds"))
