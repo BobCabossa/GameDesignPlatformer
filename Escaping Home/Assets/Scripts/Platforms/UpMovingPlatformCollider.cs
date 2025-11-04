@@ -6,7 +6,7 @@ public class UpMovingPlatformCollider : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (!collision.gameObject.CompareTag("Player"))
+        if (!ColliderHelper.IsIt<Player>(collision))
             return;
 
         if (Platform != null)
@@ -15,7 +15,7 @@ public class UpMovingPlatformCollider : MonoBehaviour
 
     private void OnCollisionExit2D(Collision2D collision)
     {
-        if (!collision.gameObject.CompareTag("Player"))
+        if (!ColliderHelper.IsIt<Player>(collision))
             return;
 
         if (Platform != null)

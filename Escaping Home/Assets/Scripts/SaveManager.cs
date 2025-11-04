@@ -12,6 +12,16 @@ public static class SaveManager
         File.WriteAllText(SavePath, json);
     }
 
+    public static void SaveCollectable(SceneNames collectableLevel)
+    {
+        GameData data = Load();
+        if (data.Collectables.Contains(collectableLevel))
+            return;
+
+        data.Collectables.Add(collectableLevel);
+        Save(data);
+    }
+
     public static GameData Load()
     {
         if (!File.Exists(SavePath))

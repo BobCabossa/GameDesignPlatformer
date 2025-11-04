@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using System.Linq;
+using UnityEngine;
 
 public static class Level
 {
@@ -16,13 +18,14 @@ public static class Level
         }
     }
 
-    public static bool BeatAllLevels()
+    public static bool UnlockedEsterEggLevel(List<SceneNames> levels)
     {
-        GameData gameData = SaveManager.Load();
+        SceneNames[] requirement = new SceneNames[] {
+            SceneNames.LevelOne,
+            SceneNames.LevelTwo,
+            SceneNames.LevelThree,
+        };
 
-        // Minus 1 get it to line up, from save.
-        int sceneIndex = gameData.highestLevelBeat - 1;
-        SceneNames levelNames = SceneNameHelper.GetSceneName(sceneIndex);
-        return levelNames == SceneNameHelper.HighestLevel;
+        return !requirement.Except(levels).Any();
     }
 }

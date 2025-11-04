@@ -16,12 +16,12 @@ public class MovingPlatformCollider : MonoBehaviour
     {
         if (collision.collider.isTrigger) return;
 
-        var playerRoot = collision.collider.transform.root;
-        if (playerRoot.CompareTag("Player"))
+        if (ColliderHelper.IsIt<Player>(collision))
         {
+            var playerRoot = collision.collider.transform.root;
             Platform.Player = playerRoot.GetComponent<Player>();
         }
-        else if (collision.gameObject.CompareTag("Enemy"))
+        else if (ColliderHelper.IsIt<Enemy>(collision))
         {
             Platform.TurnAround();
         }
@@ -31,10 +31,10 @@ public class MovingPlatformCollider : MonoBehaviour
     {
         if (collision.collider.isTrigger) return;
 
-        var playerRoot = collision.collider.transform.root;
-        if (playerRoot.CompareTag("Player"))
+        if (ColliderHelper.IsIt<Player>(collision))
         {
             Platform.Player = null;
+            var playerRoot = collision.collider.transform.root;
             playerRoot.GetComponent<Player>().PlayerMovement.SetPlatformVelocity(Vector2.zero);
         }
     }

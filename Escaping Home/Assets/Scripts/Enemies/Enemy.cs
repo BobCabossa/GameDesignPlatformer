@@ -17,15 +17,17 @@ public abstract class Enemy : MonoBehaviour
         {
             Destroy(gameObject);
         }
-        else if (collision.CompareTag("Player"))
+        else if (ColliderHelper.IsIt<Player>(collision))
         {
-            collision.GetComponent<Player>().Die();
+            Player player = collision.GetComponent<Player>();
+            if (player != null)
+                player.Die();
         }
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("Player"))
+        if (ColliderHelper.IsIt<Player>(collision))
         {
             collision.gameObject.GetComponent<Player>().Die();
         }

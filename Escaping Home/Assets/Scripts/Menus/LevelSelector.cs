@@ -21,7 +21,6 @@ public class LevelSelector : MonoBehaviour
     private void InitializeUI()
     {
         GameData gameData = SaveManager.Load();
-        bool beatAllLevels = Level.BeatAllLevels();
 
         foreach (LevelSelectButton button in buttonList)
         {
@@ -36,7 +35,8 @@ public class LevelSelector : MonoBehaviour
             }
 
             // Only unlock if beat all levels
-            button.gameObject.SetActive(beatAllLevels);
+            bool unlockedEasterEgg = Level.UnlockedEsterEggLevel(gameData.Collectables);
+            button.gameObject.SetActive(unlockedEasterEgg);
         }
     }
 }
