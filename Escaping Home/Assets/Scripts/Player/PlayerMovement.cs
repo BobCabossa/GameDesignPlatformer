@@ -50,7 +50,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void Jump()
     {
-        if (Player.jumpState != Player.JumpState.Jumping)
+        if (Player.jumpState != Player.JumpState.Jumping && Player.Rigidbody != null)
         {
             Player.jumpState = Player.JumpState.Jumping;
             Player.Rigidbody.linearVelocityY = 0;
