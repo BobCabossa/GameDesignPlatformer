@@ -124,6 +124,7 @@ public class RebindingUI : MonoBehaviour
     {
         string rebinds = inputActionsAsset.SaveBindingOverridesAsJson();
         PlayerPrefs.SetString("rebinds", rebinds);
+        PlayerPrefs.Save();
     }
 
     private void LoadRebinds()

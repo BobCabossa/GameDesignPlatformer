@@ -3,13 +3,18 @@ using UnityEngine;
 public class MainMenuController : MonoBehaviour
 {
     public GameObject StartMenu;
-    public GameObject Settings;
+    public Settings Settings;
     public LevelSelector LevelSelectorMenu;
 
     private void Awake()
     {
+        // Need the settings to be active to load setting.
+        Settings.gameObject.SetActive(true);
+
         bool firstLoad = SceneLoader.FirstLoad();
-        Settings.SetActive(false);
+        if (firstLoad)
+            SceneLoader.SetSceneToActiveScene();
+
         StartMenu.SetActive(firstLoad);
 
         LevelSelectorMenu.gameObject.SetActive(!firstLoad);
@@ -26,12 +31,12 @@ public class MainMenuController : MonoBehaviour
     public void OpenSettings()
     {
         StartMenu.SetActive(false);
-        Settings.SetActive(true);
+        Settings.Open();
     }
 
     public void BackToMainMenu()
     {
-        Settings.SetActive(false);
+        Settings.gameObject.SetActive(false);
         LevelSelectorMenu.gameObject.SetActive(false);
         StartMenu.SetActive(true);
     }
