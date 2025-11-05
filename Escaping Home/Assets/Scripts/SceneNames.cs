@@ -17,7 +17,8 @@ public enum SceneNames
     // Levels, max: unlimited
     LevelOne = 0,
     LevelTwo,
-    LevelThree
+    LevelThree,
+    LevelFour,
 }
 
 public static class SceneNameHelper
