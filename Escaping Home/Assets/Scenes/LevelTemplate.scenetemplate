@@ -17,6 +17,10 @@ MonoBehaviour:
   description: It has the structor i want in the scene already setup
   preview: {fileID: 0}
   dependencies:
+  - dependency: {fileID: 2800000, guid: a7ec9e7ad8b847b7ae4510af83c5d868, type: 3}
+    instantiationMode: 1
+  - dependency: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+    instantiationMode: 1
   - dependency: {fileID: 2800000, guid: 3028dc075ba8c584d9bc7d1e0255e038, type: 3}
     instantiationMode: 1
   - dependency: {fileID: 2800000, guid: 0f0a7cb219b8b6145a68d6fe6bec5d9a, type: 3}
@@ -27,6 +31,8 @@ MonoBehaviour:
     instantiationMode: 1
   - dependency: {fileID: 11400000, guid: 2e498d1c8094910479dc3e1b768306a4, type: 2}
     instantiationMode: 1
+  - dependency: {fileID: 1638186742796381754, guid: 35d7bf7b2cc0cc14d9ff334e7b06c00c, type: 3}
+    instantiationMode: 1
   - dependency: {fileID: 1270836085626915486, guid: a480d4b5f689b54458834a4f8e4bd77e, type: 3}
     instantiationMode: 1
   - dependency: {fileID: 2800000, guid: ee148e281f3c41c5b4ff5f8a5afe5a6c, type: 3}
@@ -35,19 +41,19 @@ MonoBehaviour:
     instantiationMode: 1
   - dependency: {fileID: 11400000, guid: 2ce83fa6fcb23fa4e88554bb7364fc62, type: 2}
     instantiationMode: 1
-  - dependency: {fileID: 2800000, guid: a23f54adab67920458862a541970689b, type: 3}
-    instantiationMode: 1
   - dependency: {fileID: 7747180454552455623, guid: a2fb2b4a9cdd841479f79824ea107f53, type: 3}
+    instantiationMode: 1
+  - dependency: {fileID: 2800000, guid: a23f54adab67920458862a541970689b, type: 3}
     instantiationMode: 1
   - dependency: {fileID: 2800000, guid: 207ee8102dd4143d288186ef0be518ee, type: 3}
     instantiationMode: 1
   - dependency: {fileID: -944628639613478452, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
     instantiationMode: 1
+  - dependency: {fileID: 2731402590980424873, guid: 10028b4beb034b344b41bed6f58a36b2, type: 3}
+    instantiationMode: 1
   - dependency: {fileID: 8158057817026539004, guid: ccf68d61ca379ed48bba157eb6146d11, type: 3}
     instantiationMode: 1
   - dependency: {fileID: 7314673719837227525, guid: 97846b4519774384588dca4f8e7d5875, type: 3}
-    instantiationMode: 1
-  - dependency: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
     instantiationMode: 1
   - dependency: {fileID: 5229925326990790943, guid: 5c0cafeba2de5934a930f9f1ae362145, type: 3}
     instantiationMode: 1
