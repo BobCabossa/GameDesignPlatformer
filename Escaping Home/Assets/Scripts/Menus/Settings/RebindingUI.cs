@@ -4,6 +4,9 @@ using System.Collections.Generic;
 
 public class RebindingUI : MonoBehaviour
 {
+    [SerializeField]
+    private MainMenuController mainMenuController;
+
     [Header("Input Settings")]
     [SerializeField]
     private InputActionAsset inputActionsAsset;
@@ -56,6 +59,7 @@ public class RebindingUI : MonoBehaviour
 
     private void StartRebind(RebindUIEntry entry)
     {
+        DisableControls();
         var action = inputActionsAsset.FindAction(entry.actionPath);
         int index = entry.actionBindingIndex;
         if (action == null)
@@ -86,6 +90,7 @@ public class RebindingUI : MonoBehaviour
         SaveRebinds();
         LoadRebinds();
         InitializeUI();
+        EnableControls();
     }
 
     private void CheckToSwap(InputControl control, RebindUIEntry entry, InputAction action)
@@ -146,5 +151,31 @@ public class RebindingUI : MonoBehaviour
         PlayerPrefs.DeleteKey("rebinds");
         PlayerPrefs.Save();
         InitializeUI();
+    }
+
+    private void DisableControls()
+    {
+        Player player = FindAnyObjectByType<Player>();
+        if (player != null)
+        {
+            player.Controls.Disable();
+        }
+        else if (mainMenuController != null)
+        {
+            mainMenuController.Controls.Disable();
+        }
+    }
+
+    private void EnableControls()
+    {
+        Player player = FindAnyObjectByType<Player>();
+        if (player != null)
+        {
+            player.Controls.Enable();
+        }
+        else if (mainMenuController != null)
+        {
+            mainMenuController.Controls.Enable();
+        }
     }
 }

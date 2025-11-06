@@ -58,6 +58,7 @@ public class Player : MonoBehaviour
         Controls?.Player.Disable();
     }
 
+    // When the scene is destroyed by scene change
     private void OnDestroy()
     {
         Controls?.Dispose();
@@ -72,6 +73,9 @@ public class Player : MonoBehaviour
     private void CreateControls()
     {
         Controls = new();
+        Controls.Player.Enable();
+        Controls.UI.Disable();
+
         if (PlayerPrefs.HasKey("rebinds"))
         {
             string json = PlayerPrefs.GetString("rebinds");

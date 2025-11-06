@@ -1483,6 +1483,10 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: BackToMainMenu
       objectReference: {fileID: 0}
+    - target: {fileID: 6484242456830933312, guid: 97846b4519774384588dca4f8e7d5875, type: 3}
+      propertyPath: mainMenuController
+      value: 
+      objectReference: {fileID: 2079734682}
     - target: {fileID: 7314673719837227525, guid: 97846b4519774384588dca4f8e7d5875, type: 3}
       propertyPath: m_Name
       value: Settings

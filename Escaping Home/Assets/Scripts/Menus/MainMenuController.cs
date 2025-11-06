@@ -2,6 +2,8 @@ using UnityEngine;
 
 public class MainMenuController : MonoBehaviour
 {
+    public InputSystemActions Controls;
+
     public GameObject StartMenu;
     public Settings Settings;
     public LevelSelector LevelSelectorMenu;
@@ -20,6 +22,18 @@ public class MainMenuController : MonoBehaviour
         LevelSelectorMenu.gameObject.SetActive(!firstLoad);
         if (!firstLoad)
             LevelSelectorMenu.Open();
+
+        Controls = new();
+        Controls.UI.Enable();
+        Controls.Player.Disable();
+
+        Controls.UI.Close.performed += _ => BackToMainMenu();
+    }
+
+    // When the scene is destroyed by scene change
+    private void OnDestroy()
+    {
+        Controls?.Dispose();
     }
 
     public void StartGame()
