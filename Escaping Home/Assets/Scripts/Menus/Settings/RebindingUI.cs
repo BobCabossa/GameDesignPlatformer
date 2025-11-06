@@ -144,6 +144,7 @@ public class RebindingUI : MonoBehaviour
     {
         inputActionsAsset.RemoveAllBindingOverrides();
         PlayerPrefs.DeleteKey("rebinds");
+        PlayerPrefs.Save();
         InitializeUI();
     }
 }
