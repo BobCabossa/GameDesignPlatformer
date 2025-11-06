@@ -1,10 +1,7 @@
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Settings : MonoBehaviour
 {
-    [SerializeField]
-    private List<GameObject> menues = new();
     private bool needReactivation = false;
 
     private void Start()
@@ -13,9 +10,9 @@ public class Settings : MonoBehaviour
         if (sceneName == SceneNames.MainMenu)
         {
             needReactivation = true;
-            foreach (var item in menues)
+            foreach (Transform child in transform)
             {
-                item.SetActive(false);
+                child.gameObject.SetActive(false);
             }
         }
     }
@@ -26,9 +23,9 @@ public class Settings : MonoBehaviour
         if (needReactivation)
         {
             needReactivation = false;
-            foreach (var item in menues)
+            foreach (Transform child in transform)
             {
-                item.SetActive(true);
+                child.gameObject.SetActive(true);
             }
         }
         else
