@@ -22,14 +22,14 @@ public class Settings : MonoBehaviour
     {
         if (needReactivation)
         {
-            needReactivation = false;
             foreach (Transform child in transform)
             {
                 child.gameObject.SetActive(true);
             }
         }
-        else
-            gameObject.SetActive(true);
+
+        needReactivation = false;
+        gameObject.SetActive(true);
     }
 
     public void ResetSave()

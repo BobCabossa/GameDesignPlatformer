@@ -1,7 +1,8 @@
-﻿using TMPro;
+﻿using System.Text.RegularExpressions;
+using TMPro;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
-using System.Text.RegularExpressions;
 
 public class PauseMenu : MonoBehaviour
 {
@@ -75,12 +76,16 @@ public class PauseMenu : MonoBehaviour
         WinScreen.SetActive(true);
     }
 
-    public void Open()
+    public async void Open()
     {
+        // Used for the first open, there are a double trigger of event (Open and close).
+        await Awaitable.NextFrameAsync();
+
         Time.timeScale = 0;
         background.SetActive(true);
         pauseMenu.Open();
         menuOpen = GameMenuOpen.Normal;
+        player.ToogleControlls();
     }
 
     public void Close()

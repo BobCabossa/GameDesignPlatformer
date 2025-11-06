@@ -89,7 +89,6 @@ public class Player : MonoBehaviour
             return;
         }
 
-        ToogleControlls();
         menu.Open();
     }
 
