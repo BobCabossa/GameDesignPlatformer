@@ -87,7 +87,10 @@ public class UpMovingPlatform : MonoBehaviour
         platformRigidbody.MovePosition(Vector2.MoveTowards(platformRigidbody.position, targetPoint, step));
         if (Vector2.Distance(platformRigidbody.position, targetPoint) < 0.001f)
         {
-            FindAnyObjectByType<Player>().Rigidbody.linearVelocityY = 0f;
+            Player player = FindAnyObjectByType<Player>();
+            if (player != null)
+                player.Rigidbody.linearVelocityY = 0f;
+            
             SetState(States.Idle);
             delay = delayBeforeMoving;
         }
