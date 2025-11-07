@@ -20,9 +20,15 @@ public class ScreenSettings : MonoBehaviour
 
     private Resolution[] resolutions;
 
+    private bool IsAspectRatio(float width, float height, float aspectW, float aspectH, float tolerance = 0.01f)
+    {
+        return Mathf.Abs((width / height) - (aspectW / aspectH)) < tolerance;
+    }
+
     private void Awake()
     {
         resolutions = Screen.resolutions
+            .Where(r => IsAspectRatio(r.width, r.height, 16f, 9f))
             .OrderByDescending(r => r.width)
             .ThenByDescending(r => r.refreshRateRatio.numerator / (float)r.refreshRateRatio.denominator)
             .ToArray();
@@ -61,8 +67,10 @@ public class ScreenSettings : MonoBehaviour
         var res = resolutions[resolutionDropdown.value];
 
         // Parse refresh rate
-        string hzText = refreshRateDropdown.options[refreshRateDropdown.value].text.Replace(" Hz", "").Trim();
-        if (!float.TryParse(hzText, NumberStyles.Float, CultureInfo.InvariantCulture, out float hz))
+        string hzText = refreshRateDropdown.options[refreshRateDropdown.value].text
+            .Replace(" Hz", "").Trim();
+
+        if (float.TryParse(hzText, NumberStyles.Float, CultureInfo.InvariantCulture, out float hz))
         {
             Debug.LogWarning($"⚠️ Could not parse refresh rate from '{hzText}', defaulting to 60 Hz.");
             hz = 60f;
