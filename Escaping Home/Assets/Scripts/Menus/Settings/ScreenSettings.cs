@@ -76,7 +76,6 @@ public class ScreenSettings : MonoBehaviour
             hz = 60f;
         }
 
-        //float hz = float.Parse(refreshRateDropdown.options[refreshRateDropdown.value].text.Replace(" Hz", ""));
         RefreshRate refresh = new()
         {
             numerator = (uint)(hz * 1000),
