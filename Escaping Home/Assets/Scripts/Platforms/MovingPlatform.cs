@@ -12,7 +12,7 @@ public class MovingPlatform : MonoBehaviour
     [SerializeField]
     private Transform platform;
 
-    public new Rigidbody2D rigidbody;
+    public Rigidbody2D Rigidbody;
 
     [SerializeField]
     private Transform startpoint;
@@ -54,7 +54,7 @@ public class MovingPlatform : MonoBehaviour
             return;
         }
 
-        Vector2 currentPosition = rigidbody.position;
+        Vector2 currentPosition = Rigidbody.position;
         Vector2 targetPosition = target.position;
 
         if (Player != null)
@@ -64,7 +64,7 @@ public class MovingPlatform : MonoBehaviour
         }
 
         Vector2 newPosition = Vector2.MoveTowards(currentPosition, targetPosition, speed * Time.fixedDeltaTime);
-        rigidbody.MovePosition(newPosition);
+        Rigidbody.MovePosition(newPosition);
 
         if (Vector2.Distance(newPosition, targetPosition) < 0.01f)
         {

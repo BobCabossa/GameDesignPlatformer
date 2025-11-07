@@ -361,7 +361,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1092410583145576209, guid: 6bb72118366a2774486b264c67897bdd, type: 3}
       propertyPath: delayBeforeGoingBack
-      value: 45
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 5871214012985998273, guid: 6bb72118366a2774486b264c67897bdd, type: 3}
       propertyPath: m_AnchoredPosition.y

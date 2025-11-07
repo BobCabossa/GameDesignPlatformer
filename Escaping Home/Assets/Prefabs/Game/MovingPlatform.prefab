@@ -260,7 +260,7 @@ MonoBehaviour:
   speed: 1
   pauseTime: 1
   platform: {fileID: 1063129681749415807}
-  rigidbody: {fileID: 7414401557107723350}
+  Rigidbody: {fileID: 7414401557107723350}
   startpoint: {fileID: 392966963989678735}
   endpoint: {fileID: 1192605257413970245}
   Player: {fileID: 0}

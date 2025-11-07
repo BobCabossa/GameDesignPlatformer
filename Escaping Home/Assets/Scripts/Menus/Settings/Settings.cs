@@ -1,5 +1,6 @@
 using UnityEngine;
 
+[RequireComponent(typeof(RebindingUI), typeof(ScreenSettings))]
 public class Settings : MonoBehaviour
 {
     private bool needReactivation = false;
