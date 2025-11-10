@@ -21,6 +21,13 @@ public class PlayerMovement : MonoBehaviour
     private int wallLayerMask;
     private Vector2 platformVelocity;
 
+    private Vector2[] GetRayStartPoints() => new Vector2[]
+    {
+        new(0,  rayVerticalSpacing),// Top
+        Vector2.zero,               // Middle
+        new(0, -rayVerticalSpacing) // Bottom
+    };
+
     private void Start()
     {
         wallLayerMask = LayerMask.GetMask("Ground");
@@ -80,12 +87,7 @@ public class PlayerMovement : MonoBehaviour
     private bool AllowPlayerToMove(float move)
     {
         Vector2 direction = new(Mathf.Sign(move), 0);
-        Vector2[] rayStartOffsets = new Vector2[]
-        {
-            new(0,  rayVerticalSpacing),// Top
-            Vector2.zero,               // Middle
-            new(0, -rayVerticalSpacing) // Bottom
-        };
+        Vector2[] rayStartOffsets = GetRayStartPoints();
 
         foreach (var offset in rayStartOffsets)
         {
@@ -93,16 +95,25 @@ public class PlayerMovement : MonoBehaviour
             RaycastHit2D hit = Physics2D.Raycast(origin, direction, rayDistance, wallLayerMask);
 
             if (hit.collider != null)
-            {
-                Debug.DrawRay(origin, direction * hit.distance, Color.red);
                 return false;
-            }
-            else
-            {
-                Debug.DrawRay(origin, direction * rayDistance, Color.green);
-            }
         }
 
         return true;
+    }
+
+    private void OnDrawGizmosSelected()
+    {
+        if (rayOrigin == null) return;
+
+        Vector2[] rayStartOffsets = GetRayStartPoints();
+        float move = 1f;
+        Vector2 direction = new(Mathf.Sign(move), 0);
+
+        Gizmos.color = GizmosSettings.Color;
+        foreach (var offset in rayStartOffsets)
+        {
+            Vector2 origin = (Vector2)rayOrigin.position + offset;
+            Gizmos.DrawLine(origin, origin + direction * rayDistance);
+        }
     }
 }
