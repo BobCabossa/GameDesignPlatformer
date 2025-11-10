@@ -17,15 +17,4 @@ public static class Level
             SaveManager.Save(gameData);
         }
     }
-
-    public static bool UnlockedEsterEggLevel(List<SceneNames> levels)
-    {
-        SceneNames[] requirement = new SceneNames[] {
-            SceneNames.LevelOne,
-            SceneNames.LevelTwo,
-            SceneNames.LevelThree,
-        };
-
-        return !requirement.Except(levels).Any();
-    }
 }

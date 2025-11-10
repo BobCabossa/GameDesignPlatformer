@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class LevelSelector : MonoBehaviour
@@ -24,19 +26,21 @@ public class LevelSelector : MonoBehaviour
 
         foreach (LevelSelectButton button in buttonList)
         {
-            int level = (int)button.LevelName;
-            bool unlocked = level <= gameData.highestLevelBeat;
-
-            // To normal levels
-            if (button.LevelName != SceneNames.TestLevel)
+            if (button.Requirement.Count > 0)
             {
-                button.gameObject.SetActive(unlocked);
+                bool unlockedEasterEgg = RequirementMeet(gameData.Collectables, button.Requirement);
+                button.gameObject.SetActive(unlockedEasterEgg);
                 continue;
             }
 
-            // Only unlock if beat all levels
-            bool unlockedEasterEgg = Level.UnlockedEsterEggLevel(gameData.Collectables);
-            button.gameObject.SetActive(unlockedEasterEgg);
+            int level = (int)button.LevelName;
+            bool unlocked = level <= gameData.highestLevelBeat;
+            button.gameObject.SetActive(unlocked);
         }
+    }
+
+    private bool RequirementMeet(List<SceneNames> levels, List<SceneNames> requirement)
+    {
+        return !requirement.Except(levels).Any();
     }
 }

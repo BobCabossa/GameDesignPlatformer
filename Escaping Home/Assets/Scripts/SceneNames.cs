@@ -3,22 +3,26 @@ using System.Linq;
 
 public enum SceneNames
 {
-    // Don't use: it will make errors
-    // As it's only use, is as a defualt before it's asigned in a method or inspector.
+    // Don't use, only as default
     None = -99, 
 
-    // Menues, max: 48
+    // Menues
     MainMenu,
     LoadingScene,
 
-    // Easter eggs, max: 49
+    // Easter eggs
     TestLevel = -50,
 
-    // Levels, max: unlimited
+    // Levels
     LevelOne = 0,
     LevelTwo,
     LevelThree,
     LevelFour,
+    LevelFive,
+    LevelSix,
+    LevelSeven,
+    LevelEight,
+    LevelNine,
 }
 
 public static class SceneNameHelper

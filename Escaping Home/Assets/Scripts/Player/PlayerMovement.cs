@@ -70,8 +70,10 @@ public class PlayerMovement : MonoBehaviour
         if (Player.jumpState != Player.JumpState.Jumping && Player.Rigidbody != null)
         {
             Player.jumpState = Player.JumpState.Jumping;
-            Player.Rigidbody.linearVelocityY = 0;
-            Player.Rigidbody.AddForceY(Player.JumpForce, ForceMode2D.Impulse);
+
+            // Calculate jump velocity
+            float jumpVelocity = Mathf.Sqrt(2 * Player.JumpForce * Mathf.Abs(Physics2D.gravity.y));
+            Player.Rigidbody.linearVelocityY = jumpVelocity;
         }
     }
 
