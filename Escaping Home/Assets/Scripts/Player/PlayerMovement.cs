@@ -16,6 +16,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField]
     private float rayVerticalSpacing = 0.5f;
 
+    private bool jumpRequested = false;
     private float moveInput;
     private int wallLayerMask;
     private Vector2 platformVelocity;
@@ -25,40 +26,53 @@ public class PlayerMovement : MonoBehaviour
         wallLayerMask = LayerMask.GetMask("Ground");
     }
 
-    public void SetupControllers()
-    {
-        Player.Controls.Player.Move.performed += OnMove;
-        Player.Controls.Player.Move.canceled += _ => OnStop();
-
-        Player.Controls.Player.Jump.performed += _ => Jump();
-    }
-
+    // Inputs
     public void SetPlatformVelocity(Vector2 velocity)
     {
         platformVelocity = velocity;
     }
 
-    private void OnMove(InputAction.CallbackContext movement)
+    public void OnMove(InputAction.CallbackContext movement)
     {
         moveInput = movement.ReadValue<Vector2>().x;
     }
 
-    private void OnStop()
+    public void OnMoveStop(InputAction.CallbackContext _)
     {
         moveInput = 0;
     }
 
+    public void JumpRequested(InputAction.CallbackContext _)
+    {
+        jumpRequested = true;
+    }
+
+    // Real movement
+    private void FixedUpdate()
+    {
+        Move();
+        Jump();
+    }
+
     private void Jump()
     {
+        if (!jumpRequested)
+            return;
+
+        jumpRequested = false;
         if (Player.jumpState != Player.JumpState.Jumping && Player.Rigidbody != null)
         {
             Player.jumpState = Player.JumpState.Jumping;
+
+            // Reset Y velocity
             Player.Rigidbody.linearVelocityY = 0;
-            Player.Rigidbody.AddForceY(Player.JumpForce);
+
+            // Apply jump force
+            Player.Rigidbody.AddForceY(Player.JumpForce, ForceMode2D.Impulse);
         }
     }
 
-    private void FixedUpdate()
+    private void Move()
     {
         float move = moveInput * Player.MoveSpeed;
         float velocityX = (AllowPlayerToMove(move) ? move : 0) + platformVelocity.x;

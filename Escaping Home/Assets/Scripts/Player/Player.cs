@@ -38,8 +38,6 @@ public class Player : MonoBehaviour
 
         CreateControls();
         Controls.Disable();
-        Controls.Player.Pause.performed += OnPause;
-        PlayerMovement.SetupControllers();
         _ = WaitForControlsToGoBack();
     }
 
@@ -81,19 +79,34 @@ public class Player : MonoBehaviour
             string json = PlayerPrefs.GetString("rebinds");
             Controls.asset.LoadBindingOverridesFromJson(json);
         }
+
+        Controls.Player.Pause.performed += OnPause;
+
+        Controls.Player.Move.performed += PlayerMovement.OnMove;
+        Controls.Player.Move.canceled += PlayerMovement.OnMoveStop;
+
+        Controls.Player.Jump.performed += PlayerMovement.JumpRequested;
+
+        if (FindPauseMenu(out PauseMenu menu))
+            Controls.UI.Close.performed += menu.OnPLayerClose;
     }
 
     private void OnPause(InputAction.CallbackContext movement)
     {
-        PauseMenu menu = FindAnyObjectByType<PauseMenu>();
+        if (FindPauseMenu(out PauseMenu menu))
+            menu.Open();
+    }
+
+    private bool FindPauseMenu(out PauseMenu menu)
+    {
+        menu = FindAnyObjectByType<PauseMenu>();
 
         if (menu == null)
         {
             Debug.Log("No game menu in scene!");
-            return;
+            return false;
         }
-
-        menu.Open();
+        return true;
     }
 
     public void ToogleControlls()
@@ -112,15 +125,9 @@ public class Player : MonoBehaviour
 
     public void Win()
     {
-        PauseMenu menu = FindAnyObjectByType<PauseMenu>();
+        if (FindPauseMenu(out PauseMenu menu))
+            menu.PlayerWon();
 
-        if (menu == null)
-        {
-            Debug.Log("No game menu in scene!");
-            return;
-        }
-
-        menu.PlayerWon();
         Level.IfBeatHighestSave();
     }
 

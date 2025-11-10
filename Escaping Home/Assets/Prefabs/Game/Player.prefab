@@ -55,7 +55,7 @@ MonoBehaviour:
   SecBeforePlayerGetControl: 0.25
   MoveSpeed: 4
   jumpState: 0
-  JumpForce: 750
+  JumpForce: 15
   JumpCoyoteTime: 0.6
   Rigidbody: {fileID: 1297920435088900462}
 --- !u!114 &7731105340297342521

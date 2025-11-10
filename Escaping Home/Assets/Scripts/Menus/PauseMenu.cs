@@ -35,18 +35,10 @@ public class PauseMenu : MonoBehaviour
 
         Scene scene = SceneManager.GetActiveScene();
         LevelText.text = AddSpacesToSentence(scene.name);
-    }
-
-    private void Start()
-    {
         player = FindAnyObjectByType<Player>();
-        if (player != null)
-        {
-            player.Controls.UI.Close.performed += _ => OnPLayerClose();
-        }
     }
 
-    private void OnPLayerClose()
+    public void OnPLayerClose(InputAction.CallbackContext _)
     {
         switch (menuOpen)
         {
