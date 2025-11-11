@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
@@ -16,5 +17,14 @@ public static class Level
             gameData.highestLevelBeat = level;
             SaveManager.Save(gameData);
         }
+    }
+
+    public static bool IsHighestLevel(SceneNames level)
+    {
+        IEnumerable<int> levels = Enum.GetValues(typeof(SceneNames))
+            .Cast<int>();
+        Debug.Log(levels.Max());
+        Debug.Log((int)level);
+        return (int)level == levels.Max();
     }
 }
