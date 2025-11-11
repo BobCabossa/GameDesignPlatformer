@@ -238,6 +238,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::FlyingEnemy
   moveSpeed: 0.035
+  moveSpeedDiviation: 20
   WallChecker: {fileID: 1866123556723524549}
   SpriteRenderer: {fileID: 1891303201063124418}
   Collider: {fileID: 6188347096430540055}

@@ -114,6 +114,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BasicWalker
   moveSpeed: 1
+  moveSpeedDiviation: 20
   WallChecker: {fileID: 5155513053087167894}
   SpriteRenderer: {fileID: 4924264598417558417}
   Collider: {fileID: 831105823170560836}

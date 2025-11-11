@@ -179,6 +179,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SmartWalker
   moveSpeed: 1
+  moveSpeedDiviation: 20
   WallChecker: {fileID: 724708685688740884}
   SpriteRenderer: {fileID: 708228376423146003}
   Collider: {fileID: 5046863016305322694}

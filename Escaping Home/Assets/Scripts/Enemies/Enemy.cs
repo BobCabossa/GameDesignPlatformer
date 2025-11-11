@@ -2,11 +2,19 @@ using UnityEngine;
 
 public abstract class Enemy : MonoBehaviour
 {
+    [Header("Movement spped")]
     public float moveSpeed = 1;
+    public float moveSpeedDiviation = 25f;
 
     public Transform WallChecker;
     public SpriteRenderer SpriteRenderer;
     public Collider2D Collider;
+
+    protected virtual void Awake()
+    {
+        float diviation = Random.Range(-moveSpeedDiviation, moveSpeedDiviation);
+        moveSpeed += moveSpeed * (diviation / 100);
+    }
 
     /// <summary> This get called at the end of <see cref="TurnAround"/> </summary>
     protected abstract void ChildTurnAround();
