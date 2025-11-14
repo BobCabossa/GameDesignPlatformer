@@ -1198,7 +1198,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MenuMover
   childToMove: {fileID: 0}
-  speed: 10
+  speed: 17.5
   StartPlacement: {x: 1930, y: 1080, z: 0}
   EndPlacement: {x: 0, y: 0, z: 0}
 --- !u!1001 &4954780666950387392

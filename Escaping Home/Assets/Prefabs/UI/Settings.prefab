@@ -346,7 +346,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Rebinds
+  m_text: Display
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -471,11 +471,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 866254edeb47cd440969f04e1e0bb382, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Settings
-  menues:
-  - {fileID: 4429734804707171805}
-  - {fileID: 168635257334056062}
-  - {fileID: 1591290672331728340}
-  - {fileID: 5545254300464462190}
 --- !u!114 &6484242456830933312
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1642,11 +1637,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5c0cafeba2de5934a930f9f1ae362145, type: 3}
---- !u!1 &168635257334056062 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5229925326990790943, guid: 5c0cafeba2de5934a930f9f1ae362145, type: 3}
-  m_PrefabInstance: {fileID: 5387274647221441889}
-  m_PrefabAsset: {fileID: 0}
 --- !u!224 &9122003910728175357 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 3770831779514506140, guid: 5c0cafeba2de5934a930f9f1ae362145, type: 3}

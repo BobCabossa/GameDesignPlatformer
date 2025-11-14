@@ -10,6 +10,7 @@ public class MenuMover : MonoBehaviour
         Opening
     }
 
+    [Tooltip("If nothing is asigned, it moves itself.")]
     public Transform childToMove;
 
     [Space(5)]
