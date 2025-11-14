@@ -68,8 +68,9 @@ public class ScreenSettings : MonoBehaviour
 
         // Parse refresh rate
         string hzText = refreshRateDropdown.options[refreshRateDropdown.value].text
-            .Replace(" Hz", "").Trim();
-
+            .Replace(" Hz", "").Trim() 
+            + "f"; // To make the damn thing know it's a float!
+        
         if (float.TryParse(hzText, NumberStyles.Float, CultureInfo.InvariantCulture, out float hz))
         {
             Debug.LogWarning($"⚠️ Could not parse refresh rate from '{hzText}', defaulting to 60 Hz.");
