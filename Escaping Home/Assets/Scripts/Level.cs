@@ -23,8 +23,7 @@ public static class Level
     {
         IEnumerable<int> levels = Enum.GetValues(typeof(SceneNames))
             .Cast<int>();
-        Debug.Log(levels.Max());
-        Debug.Log((int)level);
+
         return (int)level == levels.Max();
     }
 }
