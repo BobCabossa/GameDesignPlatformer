@@ -43,7 +43,7 @@ public class EnemySpawner : MonoBehaviour
     private void Spawning()
     {
         if (EnemySpawning == null) return;
-        
+
         Vector2 spawnPoint = GetSpawnPoint();
         Transform transform = EnemySpawning.transform;
         transform.position = Vector2.MoveTowards(
@@ -77,7 +77,7 @@ public class EnemySpawner : MonoBehaviour
     {
         // Spawns the enemy
         GameObject newEnemy = Instantiate(enemyPrefab, enemyRoot);
-        
+
         // Making the spawned enemy ready to be plads inside spawner
         EnemySpawning = newEnemy.GetComponent<Enemy>();
         if (SpawningToTheLeft)

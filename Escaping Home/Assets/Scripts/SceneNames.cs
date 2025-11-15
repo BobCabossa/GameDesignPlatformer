@@ -4,7 +4,7 @@ using System.Linq;
 public enum SceneNames
 {
     // Don't use, only as default
-    None = -99, 
+    None = -99,
 
     // Menues
     MainMenu,

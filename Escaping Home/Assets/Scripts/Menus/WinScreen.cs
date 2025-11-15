@@ -62,7 +62,7 @@ public class WinScreen : MonoBehaviour
         {
             winThankYouOriginalSize = WinThankYouText.sizeDelta;
             hintOriginalSize = HintText.sizeDelta;
-        
+
             WinThankYouText.sizeDelta = Vector2.one;
             HintText.sizeDelta = Vector2.one;
         }

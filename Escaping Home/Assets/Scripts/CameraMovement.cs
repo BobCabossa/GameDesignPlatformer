@@ -12,13 +12,6 @@ public class CameraMovement : MonoBehaviour
     public Transform minBounds;
     public Transform maxBounds;
 
-    private float zValue = -10;
-
-    private void Awake()
-    {
-        zValue = transform.position.z;
-    }
-
     private void LateUpdate()
     {
         if (target == null) return;
