@@ -18,7 +18,7 @@ public class UpMovingPlatform : MonoBehaviour
 
     [SerializeField]
     private bool playerOnPlatform = false;
-    
+
     [SerializeField]
     private States state = States.Idle;
 
@@ -53,7 +53,7 @@ public class UpMovingPlatform : MonoBehaviour
             }
             return;
         }
-        
+
         if (state != States.Idle) return;
 
         if (oldState == States.Up)
@@ -90,7 +90,7 @@ public class UpMovingPlatform : MonoBehaviour
             Player player = FindAnyObjectByType<Player>();
             if (player != null)
                 player.Rigidbody.linearVelocityY = 0f;
-            
+
             SetState(States.Idle);
             delay = delayBeforeMoving;
         }
