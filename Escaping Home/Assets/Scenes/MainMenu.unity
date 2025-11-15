@@ -3483,7 +3483,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3879972370994761172, guid: cc66b2f7adec8e842abf2904a3c3c8dc, type: 3}
       propertyPath: Requirement.Array.size
-      value: 4
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 3879972370994761172, guid: cc66b2f7adec8e842abf2904a3c3c8dc, type: 3}
       propertyPath: 'Requirement.Array.data[1]'
@@ -3499,7 +3499,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3879972370994761172, guid: cc66b2f7adec8e842abf2904a3c3c8dc, type: 3}
       propertyPath: 'Requirement.Array.data[4]'
-      value: 2
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 3879972370994761172, guid: cc66b2f7adec8e842abf2904a3c3c8dc, type: 3}
       propertyPath: 'Requirement.Array.data[5]'
