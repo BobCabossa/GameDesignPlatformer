@@ -22,7 +22,7 @@ public class RebindingUI : MonoBehaviour
         LoadRebinds();
         InitializeUI();
 
-        mainMenuController = GetComponent<MainMenuController>();
+        mainMenuController = FindAnyObjectByType<MainMenuController>();
         player = FindAnyObjectByType<Player>();
     }
 
@@ -128,7 +128,7 @@ public class RebindingUI : MonoBehaviour
 
                 string path = action.bindings[i].effectivePath;
                 string normalizedPath = NormalizeBindingPath(path);
-                
+
                 if (normalizedPath == controlPath)
                     action.ApplyBindingOverride(i, string.Empty);
             }
@@ -261,7 +261,7 @@ public class RebindingUI : MonoBehaviour
     public void ResetAllRebinds()
     {
         inputActionsAsset.RemoveAllBindingOverrides();
-        
+
         if (player != null)
         {
             player.Controls.RemoveAllBindingOverrides();
