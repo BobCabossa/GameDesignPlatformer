@@ -1093,11 +1093,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1293669713489360787, guid: a2fb2b4a9cdd841479f79824ea107f53, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 145
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1293669713489360787, guid: a2fb2b4a9cdd841479f79824ea107f53, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -11.1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2490038465096779754, guid: a2fb2b4a9cdd841479f79824ea107f53, type: 3}
       propertyPath: m_NormalizedViewPortRect.x
