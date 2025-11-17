@@ -1145,7 +1145,7 @@ MonoBehaviour:
   growthSpeedNormal: 500
   delayBeforeGoingBackNormal: 1
   growthSpeedOnWinGame: 250
-  delayBeforeGoingBackWinGame: 10
+  delayBeforeGoingBackWinGame: 4.5
   notLoading: 1
 --- !u!1 &8181966901401333240
 GameObject:
