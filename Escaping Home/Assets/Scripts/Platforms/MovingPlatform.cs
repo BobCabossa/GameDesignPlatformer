@@ -8,60 +8,70 @@ public class MovingPlatform : MonoBehaviour
     private float pauseTime = 1f;
     private float pauseTimer;
 
+    [SerializeField, Tooltip("With only set the start direction, not when it's moving.")]
+    private bool startGoingRight = true;
+
     [Header("Reference")]
     [SerializeField]
     private Transform platform;
 
     public Rigidbody2D Rigidbody;
 
-    [SerializeField]
-    private Transform startpoint;
-
-    [SerializeField]
-    private Transform endpoint;
+    public Transform LeftPoint;
+    public Transform RightPoint;
 
     private Transform target;
 
+    [HideInInspector]
     public Player Player;
 
     private void Awake()
     {
-        startpoint.position = new(startpoint.position.x, transform.position.y);
-        endpoint.position = new(endpoint.position.x, transform.position.y);
-    }
-
-    private void Start()
-    {
-        platform.position = startpoint.position;
-        target = endpoint;
+        LeftPoint.position = new(LeftPoint.position.x, transform.position.y);
+        RightPoint.position = new(RightPoint.position.x, transform.position.y);
+        target = startGoingRight ? RightPoint : LeftPoint;
     }
 
     public void TurnAround()
     {
         if (pauseTimer <= 0)
-            target = target == startpoint ? endpoint : startpoint;
+            target = target == LeftPoint ? RightPoint : LeftPoint;
     }
 
     private void FixedUpdate()
     {
-        if (pauseTimer > 0)
+        if (IsPlatformAllowToMove())
         {
-            if (Player != null)
-            {
-                Player.PlayerMovement.SetPlatformVelocity(Vector2.zero);
-            }
-            pauseTimer -= Time.fixedDeltaTime;
-            return;
+            MovePlayer();
+            MovePlatform();
         }
+    }
 
-        Vector2 currentPosition = Rigidbody.position;
-        Vector2 targetPosition = target.position;
+    private bool IsPlatformAllowToMove()
+    {
+        if (pauseTimer < 0)
+            return true;
 
         if (Player != null)
+            Player.PlayerMovement.SetPlatformVelocity(Vector2.zero);
+
+        pauseTimer -= Time.fixedDeltaTime;
+        return false;
+    }
+
+    private void MovePlayer()
+    {
+        if (Player != null)
         {
-            float move = target == startpoint ? -speed : speed;
+            float move = target == LeftPoint ? -speed : speed;
             Player.PlayerMovement.SetPlatformVelocity(new(move, 0));
         }
+    }
+
+    private void MovePlatform()
+    {
+        Vector2 currentPosition = Rigidbody.position;
+        Vector2 targetPosition = target.position;
 
         Vector2 newPosition = Vector2.MoveTowards(currentPosition, targetPosition, speed * Time.fixedDeltaTime);
         Rigidbody.MovePosition(newPosition);
@@ -76,12 +86,12 @@ public class MovingPlatform : MonoBehaviour
     // Debugging and setup
     private void OnDrawGizmos()
     {
-        if (startpoint != null && endpoint != null)
+        if (LeftPoint != null && RightPoint != null)
         {
             Gizmos.color = GizmosSettings.Color;
-            Gizmos.DrawLine(startpoint.position, endpoint.position);
-            Gizmos.DrawSphere(startpoint.position, GizmosSettings.Radius);
-            Gizmos.DrawSphere(endpoint.position, GizmosSettings.Radius);
+            Gizmos.DrawLine(LeftPoint.position, RightPoint.position);
+            Gizmos.DrawSphere(LeftPoint.position, GizmosSettings.Radius);
+            Gizmos.DrawSphere(RightPoint.position, GizmosSettings.Radius);
         }
     }
 }

@@ -101,7 +101,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1363794515923421390}
   m_Layer: 0
-  m_Name: Startpoint
+  m_Name: BottomPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -132,7 +132,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2541346776513084019}
   m_Layer: 0
-  m_Name: Endpoint
+  m_Name: TopPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -202,6 +202,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UpMovingPlatformCollider
   Platform: {fileID: 5831356923407497463}
+  Collider: {fileID: 6408178031500453798}
 --- !u!212 &5208268316453392159
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -364,8 +365,8 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 8307810360499301215}
-  - {fileID: 1363794515923421390}
   - {fileID: 2541346776513084019}
+  - {fileID: 1363794515923421390}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &5831356923407497463
@@ -383,9 +384,7 @@ MonoBehaviour:
   speed: 5
   delayBeforeMoving: 1
   platformRigidbody: {fileID: 3321736325436868220}
-  startPoint: {fileID: 1363794515923421390}
-  endPoint: {fileID: 2541346776513084019}
+  TopPoint: {fileID: 2541346776513084019}
+  BottomPoint: {fileID: 1363794515923421390}
   delay: 0
   playerOnPlatform: 0
-  state: 0
-  oldState: 0

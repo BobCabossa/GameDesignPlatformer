@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1192605257413970245}
   m_Layer: 0
-  m_Name: Endpoint
+  m_Name: RightPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -259,10 +259,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::MovingPlatform
   speed: 1
   pauseTime: 1
+  startGoingRight: 1
   platform: {fileID: 1063129681749415807}
   Rigidbody: {fileID: 7414401557107723350}
-  startpoint: {fileID: 392966963989678735}
-  endpoint: {fileID: 1192605257413970245}
+  LeftPoint: {fileID: 392966963989678735}
+  RightPoint: {fileID: 1192605257413970245}
   Player: {fileID: 0}
 --- !u!1 &8521343638189295175
 GameObject:
@@ -274,7 +275,7 @@ GameObject:
   m_Component:
   - component: {fileID: 392966963989678735}
   m_Layer: 0
-  m_Name: Startpoint
+  m_Name: LeftPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

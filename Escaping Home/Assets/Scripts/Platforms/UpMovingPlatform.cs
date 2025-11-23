@@ -9,8 +9,8 @@ public class UpMovingPlatform : MonoBehaviour
 
     [Header("Don't touch!")]
     public Rigidbody2D platformRigidbody;
-    public Transform startPoint;
-    public Transform endPoint;
+    public Transform TopPoint;
+    public Transform BottomPoint;
 
     [Header("Debug values.")]
     [SerializeField]
@@ -19,11 +19,10 @@ public class UpMovingPlatform : MonoBehaviour
     [SerializeField]
     private bool playerOnPlatform = false;
 
-    [SerializeField]
     private States state = States.Idle;
-
-    [SerializeField]
     private States oldState = States.Idle;
+
+    private Player player;
 
     private void SetState(States newState)
     {
@@ -34,6 +33,16 @@ public class UpMovingPlatform : MonoBehaviour
     public void StartMoving(GameObject player)
     {
         playerOnPlatform = player != null;
+        if (playerOnPlatform)
+        {
+            var playerRoot = player.transform.root;
+            this.player = playerRoot.GetComponent<Player>();
+        }
+        else
+        {
+            this.player = null;
+        }
+
         if (state == States.Idle)
         {
             delay = delayBeforeMoving;
@@ -41,10 +50,41 @@ public class UpMovingPlatform : MonoBehaviour
         }
     }
 
-    // To wait for the player to move off the platform, then move down
-    private void Update()
+    private void FixedUpdate()
     {
-        //if (delay == delayBeforeMoving) return;
+        HandleIdleAtTop();
+
+        delay -= Time.deltaTime;
+        if (delay > 0) return;
+
+        switch (state)
+        {
+            case States.Up:
+                Move(TopPoint.position, movePlayer: true);
+                break;
+            case States.Down:
+                Move(BottomPoint.position, movePlayer: false);
+                break;
+            default: break;
+        }
+    }
+
+    private void Move(Vector2 targetPoint, bool movePlayer)
+    {
+        float step = speed * Time.deltaTime;
+        platformRigidbody.MovePosition(Vector2.MoveTowards(platformRigidbody.position, targetPoint, step));
+        if (Vector2.Distance(platformRigidbody.position, targetPoint) < 0.001f)
+        {
+            if (player != null)
+                player.Rigidbody.linearVelocityY = 0f;
+
+            SetState(States.Idle);
+            delay = delayBeforeMoving;
+        }
+    }
+
+    private void HandleIdleAtTop()
+    {
         if (playerOnPlatform)
         {
             if (state == States.Idle && oldState == States.Down)
@@ -63,48 +103,15 @@ public class UpMovingPlatform : MonoBehaviour
         }
     }
 
-
-    private void FixedUpdate()
-    {
-        switch (state)
-        {
-            case States.Up:
-                Move(endPoint.position);
-                break;
-            case States.Down:
-                Move(startPoint.position);
-                break;
-            default: break;
-        }
-    }
-
-    private void Move(Vector2 targetPoint)
-    {
-        delay -= Time.deltaTime;
-        if (delay > 0) return;
-
-        float step = speed * Time.deltaTime;
-        platformRigidbody.MovePosition(Vector2.MoveTowards(platformRigidbody.position, targetPoint, step));
-        if (Vector2.Distance(platformRigidbody.position, targetPoint) < 0.001f)
-        {
-            Player player = FindAnyObjectByType<Player>();
-            if (player != null)
-                player.Rigidbody.linearVelocityY = 0f;
-
-            SetState(States.Idle);
-            delay = delayBeforeMoving;
-        }
-    }
-
     // Debugging and setup
     private void OnDrawGizmos()
     {
-        if (startPoint != null && endPoint != null)
+        if (BottomPoint != null && TopPoint != null)
         {
             Gizmos.color = GizmosSettings.Color;
-            Gizmos.DrawLine(startPoint.position, endPoint.position);
-            Gizmos.DrawSphere(startPoint.position, GizmosSettings.Radius);
-            Gizmos.DrawSphere(endPoint.position, GizmosSettings.Radius);
+            Gizmos.DrawLine(BottomPoint.position, TopPoint.position);
+            Gizmos.DrawSphere(BottomPoint.position, GizmosSettings.Radius);
+            Gizmos.DrawSphere(TopPoint.position, GizmosSettings.Radius);
         }
     }
 }
