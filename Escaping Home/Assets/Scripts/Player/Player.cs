@@ -15,6 +15,9 @@ public class Player : MonoBehaviour
     public PlayerNormalCollider PlayerNormalCollider;
     public PlayerTriggerCollider PlayerTriggerCollider;
 
+    [Header("Other scripts")]
+    public ThoughtBubble ThoughtBubble;
+
     [Header("Movement")]
     public float SecBeforePlayerGetControl = 0.1f;
 
