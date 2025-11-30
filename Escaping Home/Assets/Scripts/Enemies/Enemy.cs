@@ -27,9 +27,7 @@ public abstract class Enemy : MonoBehaviour
         }
         else if (ColliderHelper.IsIt<Player>(collision))
         {
-            Player player = collision.GetComponent<Player>();
-            if (player != null)
-                player.Die();
+            ColliderHelper.GetType<Player>(collision).Die();
         }
     }
 
@@ -37,7 +35,7 @@ public abstract class Enemy : MonoBehaviour
     {
         if (ColliderHelper.IsIt<Player>(collision))
         {
-            collision.gameObject.GetComponent<Player>().Die();
+            ColliderHelper.GetType<Player>(collision).Die();
         }
     }
 

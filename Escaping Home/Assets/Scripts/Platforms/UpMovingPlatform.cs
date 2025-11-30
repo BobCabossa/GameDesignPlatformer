@@ -30,13 +30,12 @@ public class UpMovingPlatform : MonoBehaviour
         state = newState;
     }
 
-    public void StartMoving(GameObject player)
+    public void StartMoving(Collision2D playerCollider)
     {
-        playerOnPlatform = player != null;
+        playerOnPlatform = playerCollider != null;
         if (playerOnPlatform)
         {
-            var playerRoot = player.transform.root;
-            this.player = playerRoot.GetComponent<Player>();
+            this.player = ColliderHelper.GetType<Player>(playerCollider);
         }
         else
         {

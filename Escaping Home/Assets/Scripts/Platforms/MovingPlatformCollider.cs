@@ -18,8 +18,7 @@ public class MovingPlatformCollider : MonoBehaviour
 
         if (ColliderHelper.IsIt<Player>(collision))
         {
-            var playerRoot = collision.collider.transform.root;
-            Platform.Player = playerRoot.GetComponent<Player>();
+            Platform.Player = ColliderHelper.GetType<Player>(collision);
         }
         else if (ColliderHelper.IsIt<Enemy>(collision))
         {
@@ -34,8 +33,7 @@ public class MovingPlatformCollider : MonoBehaviour
         if (ColliderHelper.IsIt<Player>(collision))
         {
             Platform.Player = null;
-            var playerRoot = collision.collider.transform.root;
-            playerRoot.GetComponent<Player>().PlayerMovement.SetPlatformVelocity(Vector2.zero);
+            ColliderHelper.GetType<Player>(collision).PlayerMovement.SetPlatformVelocity(Vector2.zero);
         }
     }
 }

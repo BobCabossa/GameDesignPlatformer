@@ -10,7 +10,7 @@ public class UpMovingPlatformCollider : MonoBehaviour
             return;
 
         if (Platform != null)
-            Platform.StartMoving(collision.gameObject);
+            Platform.StartMoving(collision);
     }
 
     private void OnCollisionExit2D(Collision2D collision)

@@ -17,9 +17,9 @@ MonoBehaviour:
   description: It has the structor i want in the scene already setup
   preview: {fileID: 0}
   dependencies:
+  - dependency: {fileID: 7400000, guid: 20a0828419691de4d92a0cbcac3a5789, type: 2}
+    instantiationMode: 0
   - dependency: {fileID: 2800000, guid: a7ec9e7ad8b847b7ae4510af83c5d868, type: 3}
-    instantiationMode: 1
-  - dependency: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
     instantiationMode: 1
   - dependency: {fileID: 2800000, guid: 3028dc075ba8c584d9bc7d1e0255e038, type: 3}
     instantiationMode: 1
@@ -29,15 +29,27 @@ MonoBehaviour:
     instantiationMode: 1
   - dependency: {fileID: 2800000, guid: 2fd6421f253b4ef1a19526541f9ffc0c, type: 3}
     instantiationMode: 1
+  - dependency: {fileID: 7400000, guid: b2467a1122e3aa242bd24d32aa3b4cea, type: 2}
+    instantiationMode: 0
   - dependency: {fileID: 11400000, guid: 2e498d1c8094910479dc3e1b768306a4, type: 2}
     instantiationMode: 1
   - dependency: {fileID: 1638186742796381754, guid: 35d7bf7b2cc0cc14d9ff334e7b06c00c, type: 3}
     instantiationMode: 1
   - dependency: {fileID: 1270836085626915486, guid: a480d4b5f689b54458834a4f8e4bd77e, type: 3}
     instantiationMode: 1
-  - dependency: {fileID: 2800000, guid: ee148e281f3c41c5b4ff5f8a5afe5a6c, type: 3}
-    instantiationMode: 1
+  - dependency: {fileID: 7400000, guid: 4b3765369f35c3f40a810c8ada05b0b3, type: 2}
+    instantiationMode: 0
+  - dependency: {fileID: 2800000, guid: a74dacc9bfcf47749a8630eac3456429, type: 3}
+    instantiationMode: 0
+  - dependency: {fileID: 7400000, guid: ba7d93ff57aec314a98d04f7fa926565, type: 2}
+    instantiationMode: 0
+  - dependency: {fileID: 2800000, guid: 95536a7810238db4abb5c02d9b700c92, type: 3}
+    instantiationMode: 0
+  - dependency: {fileID: 1475004868441947482, guid: 37daee32213e73347a90a87eccf7c97a, type: 3}
+    instantiationMode: 0
   - dependency: {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+    instantiationMode: 1
+  - dependency: {fileID: 2800000, guid: ee148e281f3c41c5b4ff5f8a5afe5a6c, type: 3}
     instantiationMode: 1
   - dependency: {fileID: 7747180454552455623, guid: a2fb2b4a9cdd841479f79824ea107f53, type: 3}
     instantiationMode: 1
@@ -53,12 +65,16 @@ MonoBehaviour:
     instantiationMode: 1
   - dependency: {fileID: 2800000, guid: 7cba34d70552e144586a4d3ce4a33de5, type: 3}
     instantiationMode: 1
+  - dependency: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+    instantiationMode: 1
   - dependency: {fileID: 5229925326990790943, guid: 5c0cafeba2de5934a930f9f1ae362145, type: 3}
     instantiationMode: 1
   - dependency: {fileID: 165224429815461230, guid: 6bb72118366a2774486b264c67897bdd, type: 3}
     instantiationMode: 1
   - dependency: {fileID: 12800000, guid: e3265ab4bf004d28a9537516768c1c75, type: 3}
     instantiationMode: 1
+  - dependency: {fileID: 9100000, guid: 19a745e62d980574ca2ea5f795ee3e02, type: 2}
+    instantiationMode: 0
   templatePipeline: {fileID: 0}
   badge: {fileID: 0}
   addToDefaults: 1
