@@ -19,4 +19,14 @@ public class ThoughtBubble : MonoBehaviour
     {
         animator.Play("Hide");
     }
+
+    public bool WasLastThought(string thought)
+    {
+        return TextMeshPro.text == thought;
+    }
+
+    public float GetPlayingClipLenght()
+    {
+        return animator.GetCurrentAnimatorStateInfo(0).length;
+    }
 }
