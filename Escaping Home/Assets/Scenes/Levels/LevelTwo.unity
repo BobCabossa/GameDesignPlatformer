@@ -177157,7 +177157,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 904735005}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &748774534 stripped
@@ -177393,6 +177394,76 @@ PrefabInstance:
 Transform:
   m_CorrespondingSourceObject: {fileID: 1778871625456049487, guid: c5134ce4878623e43a664dba8055449b, type: 3}
   m_PrefabInstance: {fileID: 892471718}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &904735004
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 383809028}
+    m_Modifications:
+    - target: {fileID: 2141350134102351262, guid: cf0a66560e9b7414ca84a00d99307743, type: 3}
+      propertyPath: m_Name
+      value: ThoughtTrigger
+      objectReference: {fileID: 0}
+    - target: {fileID: 5921638242381723051, guid: cf0a66560e9b7414ca84a00d99307743, type: 3}
+      propertyPath: thought
+      value: I want to try coyote time
+      objectReference: {fileID: 0}
+    - target: {fileID: 7281939444607722430, guid: cf0a66560e9b7414ca84a00d99307743, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 3.75
+      objectReference: {fileID: 0}
+    - target: {fileID: 7281939444607722430, guid: cf0a66560e9b7414ca84a00d99307743, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 118.875
+      objectReference: {fileID: 0}
+    - target: {fileID: 7281939444607722430, guid: cf0a66560e9b7414ca84a00d99307743, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 37.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7281939444607722430, guid: cf0a66560e9b7414ca84a00d99307743, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7281939444607722430, guid: cf0a66560e9b7414ca84a00d99307743, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7281939444607722430, guid: cf0a66560e9b7414ca84a00d99307743, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7281939444607722430, guid: cf0a66560e9b7414ca84a00d99307743, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7281939444607722430, guid: cf0a66560e9b7414ca84a00d99307743, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7281939444607722430, guid: cf0a66560e9b7414ca84a00d99307743, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7281939444607722430, guid: cf0a66560e9b7414ca84a00d99307743, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7281939444607722430, guid: cf0a66560e9b7414ca84a00d99307743, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: cf0a66560e9b7414ca84a00d99307743, type: 3}
+--- !u!4 &904735005 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7281939444607722430, guid: cf0a66560e9b7414ca84a00d99307743, type: 3}
+  m_PrefabInstance: {fileID: 904735004}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1211599845
 GameObject:
