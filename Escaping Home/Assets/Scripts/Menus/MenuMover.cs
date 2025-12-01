@@ -21,6 +21,9 @@ public class MenuMover : MonoBehaviour
 
     private States state = States.Closed;
 
+    public void Open() => state = States.Opening;
+    public void Close() => state = States.Closing;
+
     private void Awake()
     {
         if (childToMove == null)
@@ -30,9 +33,6 @@ public class MenuMover : MonoBehaviour
 
         childToMove.localPosition = StartPlacement;
     }
-
-    public void Open() => state = States.Opening;
-    public void Close() => state = States.Closing;
 
     private void Update()
     {

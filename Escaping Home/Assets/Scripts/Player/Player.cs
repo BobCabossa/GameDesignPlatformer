@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -20,15 +21,26 @@ public class Player : MonoBehaviour
     [Header("Other scripts")]
     public ThoughtBubble ThoughtBubble;
 
-    [Header("Movement")]
+    [Space(10)]
     public float SecBeforePlayerGetControl = 0.1f;
 
+    [Header("Movement")]
     public float MoveSpeed = 5f;
 
     [Space(5)]
     public JumpState jumpState = JumpState.Grounded;
     public float JumpForce = 40;
     public float JumpCoyoteTime = 0.2f;
+
+    [Header("Raycast to movement")]
+    public Transform rayOrigin;
+    public float rayDistance = 0.1f;
+    public List<Vector2> RayStartPoints = new()
+    {
+        new(0,  0.5f),  // Top
+        Vector2.zero,   // Middle
+        new(0, -0.5f)   // Bottom
+    };
 
     [Header("Other")]
     public Rigidbody2D Rigidbody;
@@ -37,6 +49,13 @@ public class Player : MonoBehaviour
     {
         if (SceneLoader.FirstLoad())
             SceneLoader.SetSceneToActiveScene();
+    }
+
+    private void FixedUpdate()
+    {
+        Movement.Move();
+        Jump.CoyoteTime();
+        Jump.Jump();
     }
 
     public bool FindPauseMenu(out PauseMenu menu)

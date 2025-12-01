@@ -5,6 +5,7 @@ public static class SaveManager
 {
     // Localtion: %appdata%\..\LocalLow\DefaultCompany\Escaping Home
     private static string SavePath => Path.Combine(Application.persistentDataPath, "save.json");
+    public static bool SaveFileExists() => File.Exists(SavePath);
 
     public static void Save(GameData data)
     {
@@ -36,14 +37,9 @@ public static class SaveManager
         return gameData ?? new();
     }
 
-    public static bool SaveFileExists()
-    {
-        return File.Exists(SavePath);
-    }
-
     public static void DeleteSave()
     {
-        if (File.Exists(SavePath))
+        if (SaveFileExists())
             File.Delete(SavePath);
     }
 }

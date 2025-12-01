@@ -11,6 +11,9 @@ public class MainMenuController : MonoBehaviour
 
     public Button continueBtn;
 
+    // When the scene is destroyed by scene change
+    private void OnDestroy() => Controls?.Dispose();
+    
     private void Awake()
     {
         // Need the settings to be active to load setting.
@@ -46,12 +49,6 @@ public class MainMenuController : MonoBehaviour
         Controls.Player.Disable();
 
         Controls.UI.Close.performed += _ => BackToMainMenu();
-    }
-
-    // When the scene is destroyed by scene change
-    private void OnDestroy()
-    {
-        Controls?.Dispose();
     }
 
     public void StartNewGame()

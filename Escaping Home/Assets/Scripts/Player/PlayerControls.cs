@@ -4,8 +4,6 @@ using UnityEngine.InputSystem;
 public class PlayerControls : MonoBehaviour
 {
     public Player Player;
-
-    // This can't be seen in the inspector
     private InputSystemActions Controls;
 
     public void OverrideControls(string rebinds) => Controls.LoadBindingOverridesFromJson(rebinds);
@@ -13,7 +11,7 @@ public class PlayerControls : MonoBehaviour
     public void DisableControls() => Controls.Disable();
     private void OnDestroy() => Controls?.Dispose();
 
-    private void Awake()
+    public void Awake()
     {
         CreateControls();
         AssignControls();

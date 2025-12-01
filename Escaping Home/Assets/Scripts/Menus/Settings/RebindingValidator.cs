@@ -38,8 +38,11 @@ public static class RebindingValidator
     }
 
     public static bool IsControlAlreadyUsed(
-        InputActionAsset asset, InputControl newControl, InputAction currentAction,
-        out InputAction conflictAction, out int conflictIndex)
+        InputActionAsset asset, 
+        InputControl newControl, 
+        InputAction currentAction,
+        out InputAction conflictAction, 
+        out int conflictIndex)
     {
         conflictAction = null;
         conflictIndex = -1;

@@ -8,23 +8,10 @@ public class PlayerJump : MonoBehaviour
     private float JumpCoyoteTime = 0.2f;
     private bool jumpRequested = false;
 
-    public void ResetCoyoteTimer()
-    {
-        JumpCoyoteTime = Player.JumpCoyoteTime;
-    }
-
-    public void JumpRequested(InputAction.CallbackContext _)
-    {
-        jumpRequested = true;
-    }
-
-    private void FixedUpdate()
-    {
-        CoyoteTime();   
-        Jump();
-    }
-
-    private void CoyoteTime()
+    public void ResetCoyoteTimer() => JumpCoyoteTime = Player.JumpCoyoteTime;
+    public void JumpRequested(InputAction.CallbackContext _) => jumpRequested = true;
+    
+    public void CoyoteTime()
     {
         if (Player.jumpState == Player.JumpState.CoyoteTime)
         {
@@ -37,7 +24,7 @@ public class PlayerJump : MonoBehaviour
         }
     }
 
-    private void Jump()
+    public void Jump()
     {
         if (!jumpRequested)
             return;

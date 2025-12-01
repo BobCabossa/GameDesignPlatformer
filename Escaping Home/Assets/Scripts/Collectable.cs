@@ -12,10 +12,7 @@ public class Collectable : MonoBehaviour
 
     private bool up = false;
 
-    private void Start()
-    {
-        SceneName = SceneLoader.GetSceneName();
-    }
+    private void Start() => SceneName = SceneLoader.GetSceneName();
 
     private void OnTriggerEnter2D(Collider2D collision)
     {

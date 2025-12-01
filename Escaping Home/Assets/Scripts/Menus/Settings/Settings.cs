@@ -5,6 +5,8 @@ public class Settings : MonoBehaviour
 {
     private bool needReactivation = false;
 
+    public void ResetSave() => SaveManager.DeleteSave();
+
     private void Start()
     {
         SceneNames sceneName = SceneLoader.GetSceneName();
@@ -31,10 +33,5 @@ public class Settings : MonoBehaviour
 
         needReactivation = false;
         gameObject.SetActive(true);
-    }
-
-    public void ResetSave()
-    {
-        SaveManager.DeleteSave();
     }
 }

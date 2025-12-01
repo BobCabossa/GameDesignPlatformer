@@ -19,11 +19,7 @@ public class EnemySpawner : MonoBehaviour
     private Transform enemyRoot;
 
     private Vector2 GetSpawnPoint() => (Vector2)transform.position + spawnDonePoint;
-
-    private void Awake()
-    {
-        enemyRoot = transform.root;
-    }
+    private void Awake() => enemyRoot = transform.root;
 
     private void FixedUpdate()
     {

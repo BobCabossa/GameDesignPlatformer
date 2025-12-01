@@ -65,8 +65,20 @@ public class ScreenSettings : MonoBehaviour
     public void ApplySettings()
     {
         var res = resolutions[resolutionDropdown.value];
+        var refresh = GetRefreshRate();
+        var mode = displayModeDropdown.value switch
+        {
+            0 => FullScreenMode.ExclusiveFullScreen,
+            1 => FullScreenMode.FullScreenWindow,
+            _ => FullScreenMode.Windowed
+        };
 
-        // Parse refresh rate
+        Screen.SetResolution(res.width, res.height, mode, refresh);
+        SaveSettings();
+    }
+
+    private RefreshRate GetRefreshRate()
+    {
         string hzText = refreshRateDropdown.options[refreshRateDropdown.value].text
             .Replace(" Hz", "").Trim()
             + "f"; // To make the damn thing know it's a float!
@@ -77,21 +89,11 @@ public class ScreenSettings : MonoBehaviour
             hz = 60f;
         }
 
-        RefreshRate refresh = new()
+        return new RefreshRate()
         {
             numerator = (uint)(hz * 1000),
             denominator = 1000
         };
-
-        var mode = displayModeDropdown.value switch
-        {
-            0 => FullScreenMode.ExclusiveFullScreen,
-            1 => FullScreenMode.FullScreenWindow,
-            _ => FullScreenMode.Windowed
-        };
-
-        Screen.SetResolution(res.width, res.height, mode, refresh);
-        SaveSettings();
     }
 
     private void SaveSettings()

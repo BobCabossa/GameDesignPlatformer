@@ -9,12 +9,14 @@ public class RebindUIEntry
     [Space(5)]
     [Tooltip("Path to the action e.g. \"Player/move\"")]
     public string actionPath = "Player/";
+    
     [Tooltip("What item to take from the path")]
     public int actionBindingIndex = 0;
 
     [Space(5)]
     [Tooltip("Leave this empty if there are no ui action on this key")]
     public string uiPath = "UI/";
+
     [Tooltip("If no path set ignore this")]
     public int uiBindingIndex = 0;
 

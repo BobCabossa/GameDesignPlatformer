@@ -84,8 +84,7 @@ public class WinScreen : MonoBehaviour
             }
 
             // Stop when we reach original size
-            if (IsGrowing())
-                growing = false;
+            if (IsGrowing()) growing = false;
         }
         else if (notLoading)
         {

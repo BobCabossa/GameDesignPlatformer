@@ -13,10 +13,7 @@ public class LevelSelectButton : MonoBehaviour
     [Space(10)]
     public TextMeshProUGUI titleText;
 
-    public void StartLevel()
-    {
-        SceneLoader.LoadScene(LevelName);
-    }
+    public void StartLevel() => SceneLoader.LoadScene(LevelName);
 
     private void OnValidate()
     {

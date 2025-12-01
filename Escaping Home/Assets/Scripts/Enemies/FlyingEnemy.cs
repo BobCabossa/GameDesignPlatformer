@@ -8,10 +8,7 @@ public class FlyingEnemy : Enemy
 
     private bool flyingLeft = true;
 
-    protected override void ChildTurnAround()
-    {
-        flyingLeft = !flyingLeft;
-    }
+    protected override void ChildTurnAround() => flyingLeft = !flyingLeft;
 
     private void FixedUpdate()
     {
