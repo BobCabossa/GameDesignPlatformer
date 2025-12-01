@@ -63,6 +63,12 @@ MonoBehaviour:
   jumpState: 0
   JumpForce: 2.75
   JumpCoyoteTime: 0.6
+  rayOrigin: {fileID: 1235472645948317851}
+  rayDistance: 0.1
+  RayStartPoints:
+  - {x: 0, y: 0.5}
+  - {x: 0, y: 0}
+  - {x: 0, y: -0.5}
   Rigidbody: {fileID: 1297920435088900462}
 --- !u!114 &6726481658821146190
 MonoBehaviour:
@@ -90,9 +96,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerMovement
   Player: {fileID: 2509380520276335421}
-  rayOrigin: {fileID: 1235472645948317851}
-  rayDistance: 0.45
-  rayVerticalSpacing: 0.5
 --- !u!114 &1720846811000645663
 MonoBehaviour:
   m_ObjectHideFlags: 0
