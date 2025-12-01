@@ -53,7 +53,7 @@ public class MovingPlatform : MonoBehaviour
             return true;
 
         if (Player != null)
-            Player.PlayerMovement.SetPlatformVelocity(Vector2.zero);
+            Player.Movement.SetPlatformVelocity(Vector2.zero);
 
         pauseTimer -= Time.fixedDeltaTime;
         return false;
@@ -64,7 +64,7 @@ public class MovingPlatform : MonoBehaviour
         if (Player != null)
         {
             float move = target == LeftPoint ? -speed : speed;
-            Player.PlayerMovement.SetPlatformVelocity(new(move, 0));
+            Player.Movement.SetPlatformVelocity(new(move, 0));
         }
     }
 

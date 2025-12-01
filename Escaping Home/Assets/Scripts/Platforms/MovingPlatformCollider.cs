@@ -33,7 +33,7 @@ public class MovingPlatformCollider : MonoBehaviour
         if (ColliderHelper.IsIt<Player>(collision))
         {
             Platform.Player = null;
-            ColliderHelper.GetType<Player>(collision).PlayerMovement.SetPlatformVelocity(Vector2.zero);
+            ColliderHelper.GetType<Player>(collision).Movement.SetPlatformVelocity(Vector2.zero);
         }
     }
 }

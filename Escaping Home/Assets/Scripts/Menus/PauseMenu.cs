@@ -62,7 +62,7 @@ public class PauseMenu : MonoBehaviour
 
     public void PlayerWon()
     {
-        player.Controls.Disable();
+        player.Controls.DisableControls();
         menuOpen = GameMenuOpen.Win;
         background.SetActive(true);
         WinScreen.SetActive(true);
@@ -77,7 +77,7 @@ public class PauseMenu : MonoBehaviour
         background.SetActive(true);
         pauseMenu.Open();
         menuOpen = GameMenuOpen.Normal;
-        player.ToogleControlls();
+        player.Controls.ToogleControlls();
     }
 
     public void Close()
@@ -85,7 +85,7 @@ public class PauseMenu : MonoBehaviour
         Time.timeScale = 1;
         background.SetActive(false);
         pauseMenu.Close();
-        player.ToogleControlls();
+        player.Controls.ToogleControlls();
         menuOpen = GameMenuOpen.None;
     }
 

@@ -10,7 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 1235472645948317851}
   - component: {fileID: 2509380520276335421}
+  - component: {fileID: 6726481658821146190}
   - component: {fileID: 7731105340297342521}
+  - component: {fileID: 1720846811000645663}
   - component: {fileID: 1297920435088900462}
   - component: {fileID: 9052205132068964872}
   m_Layer: 0
@@ -50,9 +52,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 62615a80b8b1abc4d998d3c362885c61, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Player
-  PlayerMovement: {fileID: 7731105340297342521}
-  PlayerNormalCollider: {fileID: 7973413357304791694}
-  PlayerTriggerCollider: {fileID: 2645486779595069950}
+  Controls: {fileID: 6726481658821146190}
+  Movement: {fileID: 7731105340297342521}
+  Jump: {fileID: 1720846811000645663}
+  NormalCollider: {fileID: 7973413357304791694}
+  TriggerCollider: {fileID: 2645486779595069950}
   ThoughtBubble: {fileID: 8457534112627810682}
   SecBeforePlayerGetControl: 0.25
   MoveSpeed: 4
@@ -60,6 +64,19 @@ MonoBehaviour:
   JumpForce: 2.75
   JumpCoyoteTime: 0.6
   Rigidbody: {fileID: 1297920435088900462}
+--- !u!114 &6726481658821146190
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1270836085626915486}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cfcd815d37126d44491b4f5d38e8db59, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerControls
+  Player: {fileID: 2509380520276335421}
 --- !u!114 &7731105340297342521
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -76,6 +93,19 @@ MonoBehaviour:
   rayOrigin: {fileID: 1235472645948317851}
   rayDistance: 0.45
   rayVerticalSpacing: 0.5
+--- !u!114 &1720846811000645663
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1270836085626915486}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 51ee5cb876e2e854d95976a7624d1b10, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerJump
+  Player: {fileID: 2509380520276335421}
 --- !u!50 &1297920435088900462
 Rigidbody2D:
   serializedVersion: 5
@@ -327,7 +357,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerTriggerCollider
   Player: {fileID: 2509380520276335421}
-  JumpCoyoteTime: 0.2
 --- !u!1 &9182604581576670338
 GameObject:
   m_ObjectHideFlags: 0

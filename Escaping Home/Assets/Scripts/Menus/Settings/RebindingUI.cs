@@ -254,7 +254,7 @@ public class RebindingUI : MonoBehaviour
         inputActionsAsset.LoadBindingOverridesFromJson(rebinds);
         if (player != null)
         {
-            player.Controls.LoadBindingOverridesFromJson(rebinds);
+            player.Controls.OverrideControls(rebinds);
         }
     }
 
@@ -264,7 +264,7 @@ public class RebindingUI : MonoBehaviour
 
         if (player != null)
         {
-            player.Controls.RemoveAllBindingOverrides();
+            player.Controls.RemoveOverride();
         }
         else if (mainMenuController != null)
         {

@@ -3,8 +3,7 @@ using UnityEngine.InputSystem;
 
 public class PlayerMovement : MonoBehaviour
 {
-    [Header("Scripts and comp.")]
-    [Space(10), SerializeField]
+    [SerializeField]
     private Player Player;
 
     [SerializeField, Space(10)]
@@ -16,7 +15,6 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField]
     private float rayVerticalSpacing = 0.5f;
 
-    private bool jumpRequested = false;
     private float moveInput;
     private int wallLayerMask;
     private Vector2 platformVelocity;
@@ -33,7 +31,6 @@ public class PlayerMovement : MonoBehaviour
         wallLayerMask = LayerMask.GetMask("Ground");
     }
 
-    // Inputs
     public void SetPlatformVelocity(Vector2 velocity)
     {
         platformVelocity = velocity;
@@ -49,32 +46,9 @@ public class PlayerMovement : MonoBehaviour
         moveInput = 0;
     }
 
-    public void JumpRequested(InputAction.CallbackContext _)
-    {
-        jumpRequested = true;
-    }
-
-    // Real movement
     private void FixedUpdate()
     {
         Move();
-        Jump();
-    }
-
-    private void Jump()
-    {
-        if (!jumpRequested)
-            return;
-
-        jumpRequested = false;
-        if (Player.jumpState != Player.JumpState.Jumping && Player.Rigidbody != null)
-        {
-            Player.jumpState = Player.JumpState.Jumping;
-
-            // Calculate jump velocity
-            float jumpVelocity = Mathf.Sqrt(2 * Player.JumpForce * Mathf.Abs(Physics2D.gravity.y));
-            Player.Rigidbody.linearVelocityY = jumpVelocity;
-        }
     }
 
     private void Move()
