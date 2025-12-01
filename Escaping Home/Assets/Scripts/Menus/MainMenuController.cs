@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 public class MainMenuController : MonoBehaviour
 {
@@ -7,6 +8,8 @@ public class MainMenuController : MonoBehaviour
     public GameObject StartMenu;
     public Settings Settings;
     public LevelSelector LevelSelectorMenu;
+
+    public Button continueBtn;
 
     private void Awake()
     {
@@ -17,12 +20,27 @@ public class MainMenuController : MonoBehaviour
         if (firstLoad)
             SceneLoader.SetSceneToActiveScene();
 
+        CheckSaveFile();
+        SetMenuToOpen(firstLoad);
+        UIControls();
+    }
+
+    private void CheckSaveFile()
+    {
+        continueBtn.interactable = SaveManager.SaveFileExists();
+    }
+
+    private void SetMenuToOpen(bool firstLoad)
+    {
         StartMenu.SetActive(firstLoad);
 
         LevelSelectorMenu.gameObject.SetActive(!firstLoad);
         if (!firstLoad)
             LevelSelectorMenu.Open();
+    }
 
+    private void UIControls()
+    {
         Controls = new();
         Controls.UI.Enable();
         Controls.Player.Disable();
@@ -34,6 +52,12 @@ public class MainMenuController : MonoBehaviour
     private void OnDestroy()
     {
         Controls?.Dispose();
+    }
+
+    public void StartNewGame()
+    {
+        SaveManager.Save(new());
+        StartGame();
     }
 
     public void StartGame()
@@ -50,6 +74,7 @@ public class MainMenuController : MonoBehaviour
 
     public void BackToMainMenu()
     {
+        CheckSaveFile();
         Settings.gameObject.SetActive(false);
         LevelSelectorMenu.gameObject.SetActive(false);
         StartMenu.SetActive(true);

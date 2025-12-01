@@ -24,7 +24,7 @@ public static class SaveManager
 
     public static GameData Load()
     {
-        if (!File.Exists(SavePath))
+        if (!SaveFileExists())
         {
             GameData data = new(); // default
             Save(data);
@@ -34,6 +34,11 @@ public static class SaveManager
         string json = File.ReadAllText(SavePath);
         GameData gameData = JsonUtility.FromJson<GameData>(json);
         return gameData ?? new();
+    }
+
+    public static bool SaveFileExists()
+    {
+        return File.Exists(SavePath);
     }
 
     public static void DeleteSave()
