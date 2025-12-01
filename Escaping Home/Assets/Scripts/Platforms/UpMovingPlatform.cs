@@ -33,14 +33,7 @@ public class UpMovingPlatform : MonoBehaviour
     public void StartMoving(Collision2D playerCollider)
     {
         playerOnPlatform = playerCollider != null;
-        if (playerOnPlatform)
-        {
-            this.player = ColliderHelper.GetType<Player>(playerCollider);
-        }
-        else
-        {
-            this.player = null;
-        }
+        player = playerOnPlatform ? ColliderHelper.GetType<Player>(playerCollider) : null;
 
         if (state == States.Idle)
         {

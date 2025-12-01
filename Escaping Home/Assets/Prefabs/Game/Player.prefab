@@ -64,11 +64,13 @@ MonoBehaviour:
   JumpForce: 2.75
   JumpCoyoteTime: 0.6
   rayOrigin: {fileID: 1235472645948317851}
-  rayDistance: 0.1
+  rayDistance: 0.425
   RayStartPoints:
-  - {x: 0, y: 0.5}
+  - {x: 0, y: 0.65}
+  - {x: 0, y: 0.35}
   - {x: 0, y: 0}
-  - {x: 0, y: -0.5}
+  - {x: 0, y: -0.35}
+  - {x: 0, y: -0.65}
   Rigidbody: {fileID: 1297920435088900462}
 --- !u!114 &6726481658821146190
 MonoBehaviour:
