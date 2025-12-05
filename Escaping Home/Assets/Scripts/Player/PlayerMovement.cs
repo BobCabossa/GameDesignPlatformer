@@ -14,6 +14,7 @@ public class PlayerMovement : MonoBehaviour
     public void SetPlatformVelocity(Vector2 velocity) => platformVelocity = velocity;
     public void OnMove(InputAction.CallbackContext movement) => moveInput = movement.ReadValue<Vector2>().x;
     public void OnMoveStop(InputAction.CallbackContext _) => moveInput = 0;
+    public float GetMoveInput() => moveInput;
 
     public void Move()
     {

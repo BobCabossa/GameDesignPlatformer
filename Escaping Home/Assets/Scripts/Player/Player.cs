@@ -11,6 +11,16 @@ public class Player : MonoBehaviour
         CoyoteTime
     }
 
+    public enum PlayerAnimation
+    {
+        Idle,
+        Walking,
+        Die,
+    }
+
+    private static readonly int AnimationWalkingId = Animator.StringToHash("Walking");
+    private static readonly int AnimationDieId = Animator.StringToHash("Die");
+
     [Header("Plaer scripts")]
     public PlayerControls Controls;
     public PlayerMovement Movement;
@@ -19,6 +29,7 @@ public class Player : MonoBehaviour
     public PlayerTriggerCollider TriggerCollider;
 
     [Header("Other scripts")]
+    public Animator Animator;
     public ThoughtBubble ThoughtBubble;
 
     [Space(10)]
@@ -45,6 +56,8 @@ public class Player : MonoBehaviour
     [Header("Other")]
     public Rigidbody2D Rigidbody;
 
+    private bool hasDied = false;
+
     private void Awake()
     {
         if (SceneLoader.FirstLoad())
@@ -53,9 +66,35 @@ public class Player : MonoBehaviour
 
     private void FixedUpdate()
     {
+        CheckIfPlayerNeedToTurnaround();
+        IsMoving();
         Movement.Move();
         Jump.CoyoteTime();
         Jump.Jump();
+    }
+
+    private void IsMoving()
+    {
+        float movement = Movement.GetMoveInput();
+        bool isMoving = movement != 0;
+        Animator.SetBool(AnimationWalkingId, isMoving);
+    }
+
+    private void CheckIfPlayerNeedToTurnaround()
+    {
+        float movement = Movement.GetMoveInput();
+        if (movement == 0)
+            return;
+
+        TurnaroundPlayer(movement > 0);
+        Debug.Log(movement);
+    }
+
+    public void TurnaroundPlayer(bool lookRight)
+    {
+        Vector3 scale = transform.localScale;
+        scale.x = lookRight ? 1 : -1;
+        transform.localScale = scale;
     }
 
     public bool FindPauseMenu(out PauseMenu menu)
@@ -70,7 +109,7 @@ public class Player : MonoBehaviour
         return true;
     }
 
-    public void OnPause(InputAction.CallbackContext movement)
+    public void OnPause(InputAction.CallbackContext _)
     {
         if (FindPauseMenu(out PauseMenu menu))
             menu.Open();
@@ -85,6 +124,16 @@ public class Player : MonoBehaviour
     }
 
     public void Die()
+    {
+        if (!hasDied)
+        {
+            hasDied = true;
+            Animator.SetTrigger(AnimationDieId);
+        }
+    }
+
+    // Called from the animation
+    public void DieAnimationDone()
     {
         SceneLoader.LoadPreviousScene();
     }

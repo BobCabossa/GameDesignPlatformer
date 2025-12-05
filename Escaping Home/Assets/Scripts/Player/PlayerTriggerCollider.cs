@@ -1,10 +1,21 @@
 using UnityEngine;
 
+[RequireComponent(typeof(Collider2D))]
 public class PlayerTriggerCollider : MonoBehaviour
 {
     public Player Player;
+    
+    private void Awake()
+    {
+        Collider2D collider = GetComponent<Collider2D>();
 
-    private void OnCollisionEnter2D(Collision2D collision)
+        if (!collider.isTrigger)
+            Debug.LogWarning("Player trigger collider, is not a trigger... setting it to trigger");
+
+        collider.isTrigger = true;
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("Ground"))
         {
@@ -13,7 +24,7 @@ public class PlayerTriggerCollider : MonoBehaviour
         }
     }
 
-    private void OnCollisionExit2D(Collision2D collision)
+    private void OnTriggerExit2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("Ground"))
         {
