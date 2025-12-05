@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
+[RequireComponent(typeof(PlayerControls), typeof(PlayerMovement), typeof(PlayerJump))]
 public class Player : MonoBehaviour
 {
     public enum JumpState
@@ -87,7 +88,6 @@ public class Player : MonoBehaviour
             return;
 
         TurnaroundPlayer(movement > 0);
-        Debug.Log(movement);
     }
 
     public void TurnaroundPlayer(bool lookRight)
