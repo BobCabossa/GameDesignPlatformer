@@ -157,7 +157,7 @@ MonoBehaviour:
   JumpForce: 2.75
   JumpCoyoteTime: 0.6
   rayOrigin: {fileID: 1235472645948317851}
-  rayDistance: 0.425
+  rayDistance: 0.3
   RayStartPoints:
   - {x: 0, y: 0.65}
   - {x: 0, y: 0.35}

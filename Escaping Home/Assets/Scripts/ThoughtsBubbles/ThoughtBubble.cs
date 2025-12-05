@@ -18,4 +18,11 @@ public class ThoughtBubble : MonoBehaviour
         TextMeshPro.text = thought;
         animator.Play("Show");
     }
+
+    public void TurnTo(bool right)
+    {
+        Vector3 scale = TextMeshPro.transform.localScale;
+        scale.x = right ? 1 : -1;
+        TextMeshPro.transform.localScale = scale;
+    }
 }

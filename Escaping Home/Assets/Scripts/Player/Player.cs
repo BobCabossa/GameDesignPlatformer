@@ -87,7 +87,9 @@ public class Player : MonoBehaviour
         if (movement == 0)
             return;
 
-        TurnaroundPlayer(movement > 0);
+        bool lookRight = movement > 0;
+        TurnaroundPlayer(lookRight);
+        ThoughtBubble.TurnTo(lookRight);
     }
 
     public void TurnaroundPlayer(bool lookRight)
