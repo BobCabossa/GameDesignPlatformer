@@ -498,6 +498,18 @@ PrefabInstance:
       propertyPath: m_LocalPosition.y
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 2490038465096779754, guid: a2fb2b4a9cdd841479f79824ea107f53, type: 3}
+      propertyPath: m_NormalizedViewPortRect.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2490038465096779754, guid: a2fb2b4a9cdd841479f79824ea107f53, type: 3}
+      propertyPath: m_NormalizedViewPortRect.width
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2490038465096779754, guid: a2fb2b4a9cdd841479f79824ea107f53, type: 3}
+      propertyPath: m_NormalizedViewPortRect.height
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2813918891718902010, guid: a2fb2b4a9cdd841479f79824ea107f53, type: 3}
       propertyPath: target
       value: 
