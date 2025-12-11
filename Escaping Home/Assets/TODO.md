@@ -1,6 +1,6 @@
 # To Do:
 
-## Main menu
+## Main menu - DONE
 
 - Title - DONE
 - Btn
@@ -11,13 +11,14 @@
 
 Make a working loading screne...
 
-## Gameplay
+## Gameplay - DONE
 
 - Simple map - DONE
 - Death zone below the map - DONE 
 - Moving platforms - DONE
 
-### Player
+### Player - DONE
+
 - Die from death zone - DONE
 - Move - DONE
 - 1 hit ko - DONE
@@ -25,9 +26,10 @@ Make a working loading screne...
 - Move with the moving platforms - DONE
 
 ### Camera movement - DONE
+
 Follow the player and have a stop point at the end of the map and the start of the map
 
-### Enemies
+### Enemies - DONE???
 
 - Kill player - DONE
 - Dies in death zone - DONE
@@ -39,12 +41,14 @@ Follow the player and have a stop point at the end of the map and the start of t
     - Jumping?
     - Simple shooter?
 
-## Pause menu
+## Pause menu - DONE
 
 ### Loader - DONE
+
 - Add progress text
 
-### Menu
+### Menu - DONE
+
 - Puase the game - DONE
 - Title - DONE
 - Sub title: level (with name level?) - DONE
@@ -57,7 +61,8 @@ Follow the player and have a stop point at the end of the map and the start of t
 ## Main menu
 
 - Make level select - DONE
-- Make more levels
+- Make more levels - WIP
 
 ## Win scene
+
 Make something to show the player that he won the level - DONE
