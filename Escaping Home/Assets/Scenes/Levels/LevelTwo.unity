@@ -177484,7 +177484,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5921638242381723051, guid: cf0a66560e9b7414ca84a00d99307743, type: 3}
       propertyPath: thought
-      value: Wow, I just did that
+      value: Wow, Did I just do that?!
       objectReference: {fileID: 0}
     - target: {fileID: 5921638242381723051, guid: cf0a66560e9b7414ca84a00d99307743, type: 3}
       propertyPath: removeAfterDelay
@@ -177492,19 +177492,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7281939444607722430, guid: cf0a66560e9b7414ca84a00d99307743, type: 3}
       propertyPath: m_LocalScale.x
-      value: 9.4
+      value: 9.5
       objectReference: {fileID: 0}
     - target: {fileID: 7281939444607722430, guid: cf0a66560e9b7414ca84a00d99307743, type: 3}
       propertyPath: m_LocalScale.y
-      value: 4.0968747
+      value: 4.1
       objectReference: {fileID: 0}
     - target: {fileID: 7281939444607722430, guid: cf0a66560e9b7414ca84a00d99307743, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 133.77
+      value: 133.75
       objectReference: {fileID: 0}
     - target: {fileID: 7281939444607722430, guid: cf0a66560e9b7414ca84a00d99307743, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 39.99
+      value: 40.05
       objectReference: {fileID: 0}
     - target: {fileID: 7281939444607722430, guid: cf0a66560e9b7414ca84a00d99307743, type: 3}
       propertyPath: m_LocalPosition.z
