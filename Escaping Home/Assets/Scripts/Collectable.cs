@@ -2,6 +2,10 @@ using UnityEngine;
 
 public class Collectable : MonoBehaviour
 {
+    [Header("Distance from ground")]
+    public bool useMaxDistanceFromGround = true;
+    public float distanceFromGround = 1.0f;
+
     [Header("Movement")]
     public float distance = 0.35f;
     public float speed = 0.01f;
@@ -12,7 +16,36 @@ public class Collectable : MonoBehaviour
 
     private bool up = false;
 
-    private void Start() => SceneName = SceneLoader.GetSceneName();
+    private void Awake()
+    {
+        if (!useMaxDistanceFromGround)
+            return;
+
+        int wallLayerMask = LayerMask.GetMask("Ground");
+        Vector2 direction = Vector2.down;
+        Vector2 origin = (Vector2)transform.position;
+
+        RaycastHit2D hit = Physics2D.Raycast(origin, direction, int.MaxValue, wallLayerMask);
+
+        if (hit.collider == null)
+        {
+            Debug.LogWarning($"Collectable; {name}, no ground below collectable.");
+            return;
+        }
+
+        Vector2 colliderPosistion = hit.point;
+        colliderPosistion.y += distanceFromGround;
+
+        transform.position = colliderPosistion;
+    }
+
+    private void Start()
+    {
+        if (SceneName == SceneNames.None)
+        {
+            SceneName = SceneLoader.GetSceneName();
+        }
+    }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -31,5 +64,14 @@ public class Collectable : MonoBehaviour
         {
             up = !up;
         }
+    }
+
+    private void OnDrawGizmosSelected()
+    {
+        Gizmos.color = GizmosSettings.Color;
+        Vector2 direction = Vector2.down;
+        Vector2 origin = (Vector2)transform.position;
+
+        Gizmos.DrawLine(origin, origin + direction * distanceFromGround);
     }
 }

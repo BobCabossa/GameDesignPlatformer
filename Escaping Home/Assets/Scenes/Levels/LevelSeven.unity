@@ -1018,6 +1018,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4411192386556753077, guid: 341e58f0222baa24f9fde69b7974e435, type: 3}
+      propertyPath: useMaxDistanceFromGround
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6296703357658992383, guid: 341e58f0222baa24f9fde69b7974e435, type: 3}
       propertyPath: m_Name
       value: Collectable
