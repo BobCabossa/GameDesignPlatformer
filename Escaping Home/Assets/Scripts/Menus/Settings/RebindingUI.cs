@@ -1,9 +1,14 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class RebindingUI : MonoBehaviour
 {
+    [Header("Overlay")]
+    [SerializeField]
+    private GameObject overlay;
+
     [Header("Input Settings")]
     [SerializeField]
     private InputActionAsset inputActionsAsset;
@@ -19,6 +24,8 @@ public class RebindingUI : MonoBehaviour
 
     private void Awake()
     {
+        overlay.SetActive(false);
+
         LoadRebinds();
         InitializeUI();
 
@@ -67,6 +74,7 @@ public class RebindingUI : MonoBehaviour
         }
 
         _originalBindingPaths[action] = action.bindings[index].effectivePath;
+        overlay.SetActive(true);
         entry.btn.bindingDisplayText.text = "Press any key...";
         action.Disable();
 
@@ -91,8 +99,13 @@ public class RebindingUI : MonoBehaviour
             LoadRebinds();
             InitializeUI();
         }
+        catch (SystemException e)
+        {
+            Debug.LogWarning(e);
+        }
         finally
         {
+            overlay.SetActive(false);
             _originalBindingPaths.Remove(action);
         }
     }
