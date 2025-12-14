@@ -7,4 +7,3 @@ public class RebindUIEntryBtn : MonoBehaviour
     public Button rebindButton;
     public TextMeshProUGUI bindingDisplayText;
 }
-

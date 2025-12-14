@@ -44,23 +44,8 @@ public class RebindingUI : MonoBehaviour
                 continue;
             }
 
-            // Update label
-            entry.btn.bindingDisplayText.text = GetBindingDisplayName(action, entry.actionBindingIndex);
-
-            // Add button listener
-            entry.btn.rebindButton.onClick.RemoveAllListeners();
-            entry.btn.rebindButton.onClick.AddListener(() => StartRebind(entry));
+            entry.InitializeBtn(action, StartRebind);
         }
-    }
-
-    private string GetBindingDisplayName(InputAction action, int bindingIndex)
-    {
-        if (bindingIndex < 0 || bindingIndex >= action.bindings.Count)
-            return "N/A";
-
-        return InputControlPath.ToHumanReadableString(
-            action.bindings[bindingIndex].effectivePath,
-            InputControlPath.HumanReadableStringOptions.OmitDevice);
     }
 
     private void StartRebind(RebindUIEntry entry)
@@ -268,6 +253,10 @@ public class RebindingUI : MonoBehaviour
         if (player != null)
         {
             player.Controls.OverrideControls(rebinds);
+        }
+        else if (mainMenuController != null)
+        {
+            mainMenuController.Controls.LoadBindingOverridesFromJson(rebinds);
         }
     }
 

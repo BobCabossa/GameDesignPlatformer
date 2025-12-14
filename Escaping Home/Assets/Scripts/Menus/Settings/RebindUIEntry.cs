@@ -1,4 +1,6 @@
 ﻿using UnityEngine;
+using UnityEngine.Events;
+using UnityEngine.InputSystem;
 
 [System.Serializable] // This is to make it able to be editable in a list :)
 public class RebindUIEntry
@@ -22,4 +24,23 @@ public class RebindUIEntry
 
     [Space(5)]
     public RebindUIEntryBtn btn;
+
+    public void InitializeBtn(InputAction action, UnityAction<RebindUIEntry> StartRebind)
+    {
+        btn.bindingDisplayText.text = GetBindingDisplayName(action, actionBindingIndex);
+
+        // Add button listener
+        btn.rebindButton.onClick.RemoveAllListeners();
+        btn.rebindButton.onClick.AddListener(() => StartRebind.Invoke(this));
+    }
+
+    private string GetBindingDisplayName(InputAction action, int bindingIndex)
+    {
+        if (bindingIndex < 0 || bindingIndex >= action.bindings.Count)
+            return "N/A";
+
+        return InputControlPath.ToHumanReadableString(
+            action.bindings[bindingIndex].effectivePath,
+            InputControlPath.HumanReadableStringOptions.OmitDevice);
+    }
 }
